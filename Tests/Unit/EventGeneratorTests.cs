@@ -45,7 +45,7 @@ public class EventGeneratorTests
             CurrentGameEvent = null
         };
         
-        var prompt = _sut.BuildEventPrompt(gameState);
+        var prompt = EventGenerator.BuildEventPrompt(gameState);
         Assert.That(prompt, Is.Not.Null.And.Not.Empty);
         TestContext.Out.WriteLine(prompt);
     }
@@ -59,7 +59,7 @@ public class EventGeneratorTests
             Description = "An obvious act of aggression!"
         };
 
-        var prompt = _sut.BuildEventOptionEffectsPrompt(option);
+        var prompt = EventGenerator.BuildEventOptionEffectsPrompt(option);
         Assert.That(prompt, Is.Not.Null.And.Not.Empty);
         TestContext.Out.WriteLine(prompt);
     }

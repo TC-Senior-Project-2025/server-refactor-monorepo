@@ -1,15 +1,12 @@
 using System.Net.WebSockets;
 using System.Text.Json;
-using System.Text;
 using Server.Common.WebSockets;
 using Server.Modules.Countries;
 using Server.Modules.Game.Sessions;
 using Server.Modules.SaveGames;
-using Server.Modules.Users;
 using Server.Modules.Game.Core;
 using Server.Modules.Game.Events;
 using Server.Modules.Game.Memory;
-using Server.Modules.Users.Entities;
 
 namespace Server.Modules.Game;
 
@@ -22,7 +19,8 @@ public class GameManager(
     SaveGamesService saveGamesService, 
     EventGenerator eventGenerator,
     CountriesService countriesService,
-    HistorySummarizer historySummarizer
+    HistorySummarizer historySummarizer,
+    RecentSituationSummarizer recentSituationSummarizer
     )
 {
     private readonly IGameSessionStore _sessionStore = sessionStore;
@@ -73,27 +71,8 @@ public class GameManager(
             await SendError(context.Socket, "Game state not found");
             return;
         }
-
-        // Generate history summary if not present (usually on first turn)
-        if (gameState.RecentSituationSummary == null)
-        {
-            var countryEntity = await countriesService.GetCountryByCode(gameState.PlayerCountryCode);
-            if (countryEntity == null)
-            {
-                await SendError(context.Socket, "Player country not found");
-                return;
-            }
-
-            if (countryEntity.History != null)
-            {
-                logger.LogInformation("Generating history summary for first turn...");
-                var summary = await historySummarizer.SummarizeAsync(countryEntity.History);
-                gameState.RecentSituationSummary = summary;
-                
-                logger.LogInformation("Saving game state with history summary...");
-                await saveGamesService.UpdateSaveGame(saveGameId, gameState);
-            }
-        }
+        
+        gameState.SaveId = saveGameId;
         
         var session = new GameSession
         {
@@ -106,7 +85,7 @@ public class GameManager(
         
         await _sessionStore.Add(session);
         logger.LogInformation("Created session {SessionId}", session.Id);  
-
+        
         await context.Socket.SendTopic("C_StartGame", gameState);
     }
 
@@ -177,11 +156,47 @@ public class GameManager(
             await SendError(context.Socket, "Option index out of range");
             return;
         }
+        
         var option = currentGameEvent.Options[optionIndex];
         
         logger.LogInformation("Generating option effects...");
         var effects = await eventGenerator.GenerateEventOptionEffects(option);
 
+        var recentEvent = new RecentEvent
+        {
+            Title = currentGameEvent.Title,
+            Description = currentGameEvent.Description,
+            ChosenOptionTitle = option.Title,
+            ChosenOptionDescription = option.Description
+        };;
+        
+        // Push the recent event
+        gameState.PushRecentEvent(recentEvent);
+        
+        // Consume the current event
+        gameState.CurrentGameEvent = null;
+        
+        // Generate recent situation summary
+        var recentSituationSummary = await recentSituationSummarizer.SummarizeAsync(
+            gameState.PlayerCountryCode, 
+            gameState.Turn, 
+            gameState.GetPlayerCountry().RecentSituationSummary,
+            gameState.RecentGameEvents
+        );
+        
+        // Update player country summary
+        gameState.GetPlayerCountry().RecentSituationSummary = recentSituationSummary;
+        
+        // Save the game state
+        if (gameState.SaveId == null)
+        {
+            logger.LogWarning("Save game ID not found for game state");
+            return;
+        }
+        
+        logger.LogInformation("Saving game state...");
+        await saveGamesService.UpdateSaveGame(gameState.SaveId.Value, gameState);
+        
         await context.Socket.SendTopic("C_DisplayEventOptionEffects", effects);
         await context.Socket.SendTopic("C_UpdateGameState", gameState);
     }

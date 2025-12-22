@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 using Server.Common.Llm.Interfaces;
 using Server.Modules.Game.Builders.Prompt;
+using Server.Modules.Game.Core;
 
 namespace Server.Modules.Game.Memory;
 
@@ -12,7 +13,8 @@ public sealed class RecentSituationSummarizer(ILlmService llmService)
 {
     // Keep it tiny + deterministic-ish.
     private const int DefaultMaxSentences = 4;
-
+    private static readonly JsonSerializerOptions SerializerOptions = new() { WriteIndented = false };
+    
     /// <summary>
     /// Generates a short situation summary (plain text) for use in prompts.
     /// </summary>
@@ -20,7 +22,7 @@ public sealed class RecentSituationSummarizer(ILlmService llmService)
         string nationName,
         int turn,
         string? previousSummary,
-        IReadOnlyList<RecentEventForSummary> recentEvents,
+        IReadOnlyList<RecentEvent> recentEvents,
         int maxSentences = DefaultMaxSentences,
         int maxRetries = 2)
     {
@@ -47,15 +49,12 @@ public sealed class RecentSituationSummarizer(ILlmService llmService)
         string nationName,
         int turn,
         string? previousSummary,
-        IReadOnlyList<RecentEventForSummary> recentEvents,
+        IReadOnlyList<RecentEvent> recentEvents,
         int maxSentences)
     {
         // Keep input small: last few events only.
-        // You can pre-trim to N events at call site if you want.
-        var eventsJson = JsonSerializer.Serialize(recentEvents, new JsonSerializerOptions
-        {
-            WriteIndented = false
-        });
+        // You can pre-trim to N events at the call site if you want.
+        var eventsJson = JsonSerializer.Serialize(recentEvents, SerializerOptions);
         
         return PromptBuilder
             .Create()
@@ -111,7 +110,7 @@ public sealed class RecentSituationSummarizer(ILlmService llmService)
         string nationName,
         int turn,
         string? previousSummary,
-        IReadOnlyList<RecentEventForSummary> recentEvents,
+        IReadOnlyList<RecentEvent> recentEvents,
         int maxSentences)
     {
         // Simple deterministic summary: last event + carry forward.
@@ -141,12 +140,3 @@ public sealed class RecentSituationSummarizer(ILlmService llmService)
         return string.Join(". ", kept) + ".";
     }
 }
-
-/// <summary>
-/// Minimal event info for summarization. Keep this small to save tokens.
-/// </summary>
-public sealed record RecentEventForSummary(
-    string Title,
-    string Description,
-    string? ChosenOptionTitle,
-    string? ChosenOptionDescription);

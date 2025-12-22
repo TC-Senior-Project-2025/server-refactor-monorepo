@@ -70,6 +70,10 @@ namespace Server.Migrations
                         .HasColumnType("text")
                         .HasColumnName("history");
 
+                    b.Property<string>("HistorySummary")
+                        .HasColumnType("text")
+                        .HasColumnName("history_summary");
+
                     b.Property<int>("Manpower")
                         .HasColumnType("integer")
                         .HasColumnName("manpower");

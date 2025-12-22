@@ -8,65 +8,21 @@ using Server.Common.Llm.Interfaces;
 using Server.Common.Llm.Options;
 using Server.Common.Llm.Services;
 using Server.Modules.Game.Memory;
+using Tests.Integration.Bases;
 
 namespace Tests.Integration;
 
 [TestFixture]
-public class HistorySummarizerTests
+public class HistorySummarizerTests : LlmTestBase
 {
-    private ServiceProvider _sp = null!;
-    private ILlmService _llmService = null!;
-    private HistorySummarizer _sut = null!;
-    
-    [OneTimeSetUp]
-    public void OneTimeSetUp()
+    private HistorySummarizer _sut;
+    private ILogger<HistorySummarizer> _logger;
+
+    [SetUp]
+    public void Setup()
     {
-        Env.Load();
-
-        var config = new ConfigurationBuilder()
-            .SetBasePath(TestContext.CurrentContext.TestDirectory)
-            .AddJsonFile("appsettings.json", optional: true)
-            .AddEnvironmentVariables()
-            .Build();
-
-        var apiKey = config["Llm:ApiKey"];
-        if (string.IsNullOrWhiteSpace(apiKey))
-            Assert.Ignore("Missing Llm:ApiKey. Set LLM__ApiKey or .env");
-
-        // Sanity: does binding see it?
-        var probe = new LlmOptions();
-        config.GetSection("Llm").Bind(probe);
-        if (string.IsNullOrWhiteSpace(probe.ApiKey))
-            Assert.Fail("Config has Llm:ApiKey but binding to LlmOptions.ApiKey produced empty. Check LlmOptions property names/casing.");
-
-        var services = new ServiceCollection();
-
-        services.AddSingleton<IConfiguration>(config);
-        services.AddLogging(b => b.AddConsole());
-
-        services.AddOptions<LlmOptions>()
-            .Bind(config.GetSection("Llm"))
-            .Validate(o => !string.IsNullOrWhiteSpace(o.ApiKey), "Llm:ApiKey is required")
-            .ValidateOnStart();
-
-        services.AddHttpClient<ILlmService, OpenRouterLlmService>((sp, client) =>
-        {
-            var opts = sp.GetRequiredService<IOptions<LlmOptions>>().Value;
-            client.Timeout = TimeSpan.FromSeconds(opts.Timeout);
-            client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", opts.ApiKey);
-        });
-
-        _sp = services.BuildServiceProvider();
-
-        _llmService = _sp.GetRequiredService<ILlmService>();
-        _sut = new HistorySummarizer(_sp.GetRequiredService<ILogger<HistorySummarizer>>(), _llmService);
-    }
-
-    [OneTimeTearDown]
-    public void OneTimeTearDown()
-    {
-        _sp?.Dispose();
+        _logger = Sp.GetRequiredService<ILogger<HistorySummarizer>>();
+        _sut = new HistorySummarizer(_logger, Llm);
     }
     
     [Test]
@@ -80,21 +36,7 @@ public class HistorySummarizerTests
     [Test]
     public async Task SummarizeAsync_ReturnsSummary()
     {
-        const string history = """
-                      Han stands as the smallest and most vulnerable of the seven Warring States. Sandwiched between the expansionist Qin to the west, powerful Wei to the north, and ambitious Chu to the south, Han’s survival depends on diplomacy, strategic positioning, and caution. Once a central Zhou territory, Han now acts more as a buffer state than a contender.
-                      
-                      Leadership: King Huanhui rules in name, but real power is diffused among ministers and regional elites. Han Fei, a brilliant Legalist thinker, influences policy circles but lacks formal authority. The royal court is cautious, with little appetite for reform that might anger nobles or Qin.
-                      
-                      Internal Affairs: The economy is modest. Han’s heartland in the Central Plains provides grain and access to trade, but manpower is low and recent territorial losses — such as Shangdang to Qin — have hurt morale. Central authority is weak, and local lords often act autonomously. Reforms are possible but risky.
-                      
-                      Military: Han maintains a small, largely defensive army. Fortified passes and river crossings offer natural advantages, but prolonged warfare would be ruinous. Without strong allies or hired troops, Han cannot survive direct assault by Qin.
-                      
-                      Diplomacy: Han’s best weapon is negotiation. It has ties to Wei and Zhao, and must avoid provoking Qin while quietly supporting any anti-Qin coalition. Bribery, flattery, and promises of access or supplies can buy Han time and security.
-                      
-                      Territory: Han controls a narrow corridor of the Central Plains, including Yingchuan and Sanchuan. Though small, this land is critical for movement between east and west — a fact that can be leveraged in diplomacy.
-                      
-                      Threats & Opportunities: Qin’s dominance threatens Han’s survival. However, by acting as a diplomatic broker and logistical keystone, Han can delay conquest and shape the battlefield indirectly. Survive the early game, and you may yet turn irrelevance into influence.
-                      """;
+        const string history = "Leadership: King Kaolie (Xiong Wan/Yuan, r. 262–238 BC) sits on the Chu throne . His chief\nminister is Lord Chunshen (Huang Xie), an astute veteran who has been Chu’s Prime Minister and\none of the famed “Four Lords” of the period . Queen Dowager and court aristocrats also influence\npolicies.\nInternal: Chu is the largest state by land and population. Its economy is based on rice farming in the\nsouth and loess agriculture up north. Kaolie’s government is stable, absorbing the recent annexation\nof Lu (249 BC) . Chunshen has invited many scholars and retainers to court, boosting Chu’s\nculture. However, internal factionalism (nobles vs. central court) and a large bureaucracy mean\nreforms are slow.\nMilitary: Chu’s army is vast, drawing on loyal peasant conscripts and nobles’ cavalry. It boasts elite\ntroops (e.g. Lord Chunshen himself is a capable general). Recently Chu successfully absorbed Lu ,\nextending its border east. Though once repeatedly checked by Qin, Chu still fields the largest\ninfantry. Generals like Zhuang Qiao and Li You stand ready at frontier garrisons.\nDiplomacy: Chu often leads southern coalitions. It maintains ties with Wei and Zhao against Qin and\nhas friendly trade with Qi. However, it remains suspicious of northern neighbors. There are no formal\nalliances now (some rivals fear Chu’s expansion) but Chu’s reputation causes others to court or avoid\nit.\nTerritory: Chu rules all lands between the Huai and Yangtze rivers and south to the Han River basin.\nIts effective capital is in Shouchun (moved from Yinglong/Shou in past decades to stay away from\nQin). Chu holds rich rice fields and strategic southern passes (e.g. at Shouxian). It also commands\nfrontier corridors into the Yangtze valleys.\nThreats/Opportunities: Qin’s looming power in the west is Chu’s chief concern. Chu’s leaders must\nguard against Qin’s next move. Internally, however, Chu’s size is its strength – it can field armies large\nenough to strike at weaker neighbors (an opportunity Chu has used to expand). With careful\ndiplomacy, Chu could be pivot in any anti‑Qin alliance while retaining its dominion over southern\nChina.";
 
         var summary = await _sut.SummarizeAsync(history);
         Assert.That(summary, Is.Not.Null.And.Not.Empty);

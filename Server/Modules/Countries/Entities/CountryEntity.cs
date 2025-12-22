@@ -42,4 +42,7 @@ public class CountryEntity
 
     [Column("history")]
     public string? History { get; set; }
+    
+    [Column("history_summary")]
+    public string? HistorySummary { get; set; }
 }

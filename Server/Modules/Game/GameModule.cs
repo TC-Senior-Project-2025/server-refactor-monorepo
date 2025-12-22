@@ -25,6 +25,7 @@ public static class GameModule
         services.AddScoped<GameManager>();
         services.AddScoped<EventGenerator>();
         services.AddScoped<HistorySummarizer>();
+        services.AddScoped<RecentSituationSummarizer>();
     }
 
     /// <summary>

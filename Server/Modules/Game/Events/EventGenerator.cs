@@ -133,7 +133,7 @@ public class EventGenerator(ILogger<EventGenerator> logger, ILlmService llmServi
             .Context()
                 .Bullet($"Nation Code: {gameState.PlayerCountryCode}")
                 .Bullet($"Turn: {gameState.Turn}")
-                .Bullet($"Recent Situation Summary (may be empty): {gameState.RecentSituationSummary}")
+                .Bullet($"Recent Situation Summary (may be empty): {gameState.GetPlayerCountry().RecentSituationSummary}")
             .End()
             .Rules()
                 .UseSchemaExample(eventExample)

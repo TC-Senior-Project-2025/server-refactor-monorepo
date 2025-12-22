@@ -27,7 +27,8 @@ public class SaveGamesService(AppDbContext dbContext, CountriesService countries
                 Treasury = ce.Treasury,
                 Stability = ce.Stability,
                 Manpower = ce.Manpower,
-                Prestige = ce.Prestige
+                Prestige = ce.Prestige,
+                RecentSituationSummary = ce.HistorySummary
             });
         
         var gameState = new GameState

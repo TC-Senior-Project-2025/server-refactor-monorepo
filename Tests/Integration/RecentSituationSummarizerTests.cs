@@ -1,5 +1,4 @@
-﻿using Moq;
-using Server.Common.Llm.Interfaces;
+﻿using Server.Modules.Game.Core;
 using Server.Modules.Game.Memory;
 using Tests.Integration.Bases;
 
@@ -24,7 +23,7 @@ public class RecentSituationSummarizerTests : LlmTestBase
             "authority and military readiness. Neighboring states remain wary, but no coordinated " +
             "opposition has yet formed.";
         
-        List<RecentEventForSummary> recentEvents =
+        List<RecentEvent> recentEvents =
         [
             new(
                 Title: "Border Commanderies Reorganized",

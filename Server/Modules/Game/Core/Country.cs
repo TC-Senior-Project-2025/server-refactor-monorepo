@@ -12,4 +12,5 @@ public class Country
     public int Manpower { get; set; } = 50;
     public int Prestige { get; set; } = 50;
 
+    public string? RecentSituationSummary { get; set; }
 }
