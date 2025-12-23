@@ -52,7 +52,7 @@ public class AuthController(AuthService authService) : ControllerBase
                 Expires = DateTime.UtcNow.AddDays(7)
             });
 
-            return Ok(new { token });
+            return Ok(new { Token = token });
         }
         catch (Exception)
         {

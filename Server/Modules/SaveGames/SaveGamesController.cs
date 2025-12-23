@@ -17,7 +17,7 @@ public class SaveGamesController(SaveGamesService saveGamesService) : Controller
     /// Creates a new save game.
     /// </summary>
     [HttpPost]
-    public async Task<ActionResult<SaveGameDto>> Create()
+    public async Task<ActionResult<SaveGameDto>> Create(CreateSaveGameDto dto)
     {
         // "Id" claim is populated by StatefulAuthHandler from the user's ID
         var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
@@ -26,14 +26,9 @@ public class SaveGamesController(SaveGamesService saveGamesService) : Controller
             return Unauthorized();
         }
 
-        var saveGame = await saveGamesService.Create(userId);
+        var saveGame = await saveGamesService.Create(userId, dto);
 
-        return Ok(new SaveGameDto
-        {
-            Id = saveGame.Id,
-            UserId = saveGame.UserId,
-            GameStateJson = saveGame.GameStateJson
-        });
+        return Ok(saveGame);
     }
 
     /// <summary>
@@ -50,11 +45,25 @@ public class SaveGamesController(SaveGamesService saveGamesService) : Controller
 
         var saveGames = await saveGamesService.ListForUser(userId);
 
-        return Ok(saveGames.Select(s => new SaveGameDto
+        return Ok(saveGames);
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult> DeleteSaveGame(int id)
+    {
+        var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+        if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out var userId))
         {
-            Id = s.Id,
-            UserId = s.UserId,
-            GameStateJson = s.GameStateJson
-        }));
+            return Unauthorized();
+        }
+        
+        var saveGame = await saveGamesService.GetSaveGame(id);
+        if (saveGame == null) return NotFound("Save game not found");
+        
+        if (saveGame.UserId != userId) return Unauthorized();
+        
+        await saveGamesService.DeleteSaveGame(id);
+        
+        return Ok();
     }
 }

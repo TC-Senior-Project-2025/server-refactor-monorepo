@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Server.Modules.Users;
@@ -19,6 +20,13 @@ public class SaveGameEntity
     public int Id { get; set; }
 
     /// <summary>
+    /// The save name. Max length is 50 characters.
+    /// </summary>
+    [Column("save_name")]
+    [MaxLength(50)]
+    public required string SaveName { get; set; }
+
+    /// <summary>
     /// Gets or sets the serialized game state.
     /// </summary>
     [Column("game_state_json")]
@@ -28,11 +36,17 @@ public class SaveGameEntity
     /// Gets or sets the ID of the user who owns this save.
     /// </summary>
     [Column("user_id")]
-    public int UserId { get; set; }
+    public required int UserId { get; set; }
 
     /// <summary>
     /// Gets or sets the user who owns this save.
     /// </summary>
     [ForeignKey(nameof(UserId))]
-    public UserEntity UserEntity { get; set; } = null!;
+    public UserEntity UserEntity { get; set; }
+    
+    /// <summary>
+    /// Gets or sets the timestamp when the save game was created.
+    /// </summary>
+    [Column("created_at")]
+    public DateTime CreatedAt { get; set; }
 }

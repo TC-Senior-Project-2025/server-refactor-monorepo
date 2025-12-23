@@ -8,8 +8,9 @@ namespace Server.Modules.SaveGames.Dto;
 public class CreateSaveGameDto
 {
     /// <summary>
-    /// The game state in JSON format.
+    /// The name of the save game.
     /// </summary>
     [Required]
-    public string GameStateJson { get; set; } = string.Empty;
+    [MaxLength(50)]
+    public required string SaveName { get; init; }
 }

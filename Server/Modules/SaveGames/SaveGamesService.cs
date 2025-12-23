@@ -16,32 +16,37 @@ public class SaveGamesService(AppDbContext dbContext, CountriesService countries
     /// <summary>
     /// Creates a new save game for a user.
     /// </summary>
-    public async Task<SaveGameEntity> Create(int userId)
+    public async Task<SaveGameEntity> Create(int userId, CreateSaveGameDto dto)
     {
         var countries = (await countriesService.GetCountries())
             .ToDictionary(ce => ce.Code, ce => new Country
             {
                 Code = ce.Code,
                 Name = ce.Name,
-                Efficiency = ce.Efficiency,
-                Treasury = ce.Treasury,
-                Stability = ce.Stability,
-                Manpower = ce.Manpower,
-                Prestige = ce.Prestige,
+                Resources = new NationalResources
+                {
+                    Efficiency = ce.Efficiency,
+                    Treasury = ce.Treasury,
+                    Manpower = ce.Manpower,
+                    Stability = ce.Stability,
+                    Prestige = ce.Prestige
+                },
                 RecentSituationSummary = ce.HistorySummary
             });
         
         var gameState = new GameState
         {
-            Turn = 1,
+            Turn = 0,
             PlayerCountryCode = "QIN",
             Countries = countries,
         };
 
         var saveGame = new SaveGameEntity
         {
+            SaveName = dto.SaveName,
             UserId = userId,
-            GameStateJson = JsonSerializer.Serialize(gameState)
+            GameStateJson = JsonSerializer.Serialize(gameState),
+            CreatedAt = DateTime.UtcNow
         };
 
         dbContext.SaveGames.Add(saveGame);
@@ -78,6 +83,15 @@ public class SaveGamesService(AppDbContext dbContext, CountriesService countries
         
         saveGame.GameStateJson = JsonSerializer.Serialize(gameState);
         
+        await dbContext.SaveChangesAsync();
+    }
+
+    public async Task DeleteSaveGame(int id)
+    {
+        var saveGame = await GetSaveGame(id);
+        if (saveGame == null) return;
+        
+        dbContext.SaveGames.Remove(saveGame);
         await dbContext.SaveChangesAsync();
     }
 }

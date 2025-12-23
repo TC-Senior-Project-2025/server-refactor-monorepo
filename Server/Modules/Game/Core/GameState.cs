@@ -23,6 +23,8 @@ public class GameState
     
     private const int MaxRecentEvents = 3;
     public List<RecentEvent> RecentGameEvents { get; init; } = [];
+
+    public GamePhase CurrentPhase { get; set; } = GamePhase.Start;
     
     /// <summary>
     /// Gets the domain-layer player country instance, based on the player's country code.
@@ -37,6 +39,11 @@ public class GameState
         return country;
     }
     
+    /// <summary>
+    /// Pushes a recent event onto the recent event queue, which is bounded.
+    /// Elements out of bound are automatically evicted.
+    /// </summary>
+    /// <param name="e"></param>
     public void PushRecentEvent(RecentEvent e)
     {
         RecentGameEvents.Add(e);

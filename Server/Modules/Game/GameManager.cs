@@ -2,6 +2,9 @@ using System.Net.WebSockets;
 using System.Text.Json;
 using Server.Common.WebSockets;
 using Server.Modules.Countries;
+using Server.Modules.Game.Actions;
+using Server.Modules.Game.Actions.Dto;
+using Server.Modules.Game.Actions.Enums;
 using Server.Modules.Game.Sessions;
 using Server.Modules.SaveGames;
 using Server.Modules.Game.Core;
@@ -73,7 +76,7 @@ public class GameManager(
         }
         
         gameState.SaveId = saveGameId;
-        
+
         var session = new GameSession
         {
             Id = Guid.NewGuid(),
@@ -82,6 +85,12 @@ public class GameManager(
             CreatedAt = default,
             LastActiveAt = default
         };
+
+        var currentSession = await _sessionStore.GetByUserId(context.UserEntity.Id);
+        if (currentSession != null)
+        {
+            await _sessionStore.Remove(currentSession.Id);
+        }
         
         await _sessionStore.Add(session);
         logger.LogInformation("Created session {SessionId}", session.Id);  
@@ -98,6 +107,20 @@ public class GameManager(
             await SendError(context.Socket, "Session not found for user");
             return;
         }
+        
+        var gameState = session.GameState;
+        if (gameState.CurrentPhase != GamePhase.Start)
+        {
+            await SendError(context.Socket, "Game not in start phase");
+            return;
+        }
+
+        gameState.CurrentPhase = GamePhase.EventGeneration;
+        
+        logger.LogInformation("Advancing turn...");
+        gameState.Turn++;
+        
+        await context.Socket.SendTopic("C_UpdateState", gameState);
     }
 
     /// <summary>
@@ -116,10 +139,16 @@ public class GameManager(
         }
 
         var gameState = session.GameState;
+        if (gameState.CurrentPhase != GamePhase.EventGeneration)
+        {
+            await SendError(context.Socket, "Game not in event generation phase");
+            return;
+        }
         
         logger.LogInformation("Generating event...");
         var gameEvent = await eventGenerator.GenerateEventAsync(gameState);
         gameState.CurrentGameEvent = gameEvent;
+        gameState.CurrentPhase = GamePhase.EventOptionSelect;
 
         await context.Socket.SendTopic("C_DisplayEvent", gameEvent);
         await context.Socket.SendTopic("C_UpdateGameState", gameState);
@@ -168,13 +197,12 @@ public class GameManager(
             Description = currentGameEvent.Description,
             ChosenOptionTitle = option.Title,
             ChosenOptionDescription = option.Description
-        };;
+        };
+        
+        // TODO: Introduce a bounded list so that we can derive recent events without mutating (prevent lost changes)
         
         // Push the recent event
         gameState.PushRecentEvent(recentEvent);
-        
-        // Consume the current event
-        gameState.CurrentGameEvent = null;
         
         // Generate recent situation summary
         var recentSituationSummary = await recentSituationSummarizer.SummarizeAsync(
@@ -184,10 +212,40 @@ public class GameManager(
             gameState.RecentGameEvents
         );
         
+        // Consume the current event
+        gameState.CurrentGameEvent = null;
+        
         // Update player country summary
         gameState.GetPlayerCountry().RecentSituationSummary = recentSituationSummary;
         
+        // Transition to player action phase
+        gameState.CurrentPhase = GamePhase.PlayerAction;
+        
         // Save the game state
+        // if (gameState.SaveId == null)
+        // {
+        //     logger.LogWarning("Save game ID not found for game state");
+        //     return;
+        // }
+        //
+        // logger.LogInformation("Saving game state...");
+        // await saveGamesService.UpdateSaveGame(gameState.SaveId.Value, gameState);
+        
+        await context.Socket.SendTopic("C_DisplayEventOptionEffects", effects);
+        await context.Socket.SendTopic("C_UpdateGameState", gameState);
+    }
+
+    [GameAction("S_SaveGame")]
+    public async Task SaveGame(GameActionContext context)
+    {
+        var session = await _sessionStore.GetByUserId(context.UserEntity.Id);
+        if (session == null)
+        {
+            await SendError(context.Socket, "Session not found for user");
+            return;
+        }
+        
+        var gameState = session.GameState;
         if (gameState.SaveId == null)
         {
             logger.LogWarning("Save game ID not found for game state");
@@ -197,7 +255,65 @@ public class GameManager(
         logger.LogInformation("Saving game state...");
         await saveGamesService.UpdateSaveGame(gameState.SaveId.Value, gameState);
         
-        await context.Socket.SendTopic("C_DisplayEventOptionEffects", effects);
-        await context.Socket.SendTopic("C_UpdateGameState", gameState);
+        await context.Socket.SendTopic("C_SaveGameResponse", "Game saved successfully");
+    }
+
+    [GameAction("S_PlayerAction")]
+    public async Task HandlePlayerAction(GameActionContext context)
+    {
+        PlayerActionDto? playerActionDto;
+        try
+        {
+            playerActionDto = context.Payload.Deserialize<PlayerActionDto>();
+        }
+        catch (Exception e)
+        {
+            logger.LogError(e, "Error parsing player action");
+            await SendError(context.Socket, "Error parsing player action");
+            return;
+        }
+
+        if (playerActionDto == null)
+        {
+            logger.LogError("Player action not found");
+            await SendError(context.Socket, "Player action not found");
+            return;
+        }
+        
+        var session = await _sessionStore.GetByUserId(context.UserEntity.Id);
+        if (session == null)
+        {
+            await SendError(context.Socket, "Session not found for user");
+            return;
+        }
+
+        var gameState = session.GameState;
+        
+        if (gameState.CurrentPhase != GamePhase.PlayerAction)
+        {
+            await SendError(context.Socket, "Game not in player action phase");
+            return;
+        }
+
+        var playerAction = PlayerAction.From(playerActionDto);
+        if (playerAction == null)
+        {
+            logger.LogError("Invalid player action");
+            await SendError(context.Socket, "Invalid player action");
+            return;       
+        }
+        
+        switch (playerAction.Action)
+        {
+            case PlayerActionType.IncreaseMilitaryBudget:
+                gameState.GetPlayerCountry().Resources.Treasury -= 10;
+                gameState.GetPlayerCountry().Resources.Manpower += 20;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException($"Unknown player action: {playerAction.Action.ToString()}");
+        }
+        
+        gameState.CurrentPhase = GamePhase.Start;
+        await context.Socket.SendTopic("C_UpdateState", gameState);
     }
 }
