@@ -59,6 +59,7 @@ public class GameManager(
         logger.LogInformation("Starting from saved game...");
 
         // TODO: Handle get JSON property error
+        // TODO: Use DTO
         var saveGameId = context.Payload.GetProperty("SaveGameId").GetInt32();
         var saveGame = await saveGamesService.GetSaveGame(saveGameId);
 
@@ -120,7 +121,7 @@ public class GameManager(
         logger.LogInformation("Advancing turn...");
         gameState.Turn++;
         
-        await context.Socket.SendTopic("C_UpdateState", gameState);
+        await context.Socket.SendTopic("C_UpdateGameState", gameState);
     }
 
     /// <summary>
@@ -146,10 +147,13 @@ public class GameManager(
         }
         
         logger.LogInformation("Generating event...");
-        var gameEvent = await eventGenerator.GenerateEventAsync(gameState);
+        // var gameEvent = await eventGenerator.GenerateEventAsync(gameState);
+        var gameEvent = await eventGenerator.GenerateEventExampleAsync();
+        
         gameState.CurrentGameEvent = gameEvent;
         gameState.CurrentPhase = GamePhase.EventOptionSelect;
-
+        gameState.GetPlayerCountry().Resources.ApplyChanges(gameEvent.ResourceChanges);
+        
         await context.Socket.SendTopic("C_DisplayEvent", gameEvent);
         await context.Socket.SendTopic("C_UpdateGameState", gameState);
     }
@@ -189,7 +193,8 @@ public class GameManager(
         var option = currentGameEvent.Options[optionIndex];
         
         logger.LogInformation("Generating option effects...");
-        var effects = await eventGenerator.GenerateEventOptionEffects(option);
+        // var effects = await eventGenerator.GenerateEventOptionEffectsAsync(option);
+        var effects = await eventGenerator.GenerateEventOptionEffectsExampleAsync();
 
         var recentEvent = new RecentEvent
         {
@@ -205,16 +210,20 @@ public class GameManager(
         gameState.PushRecentEvent(recentEvent);
         
         // Generate recent situation summary
-        var recentSituationSummary = await recentSituationSummarizer.SummarizeAsync(
-            gameState.PlayerCountryCode, 
-            gameState.Turn, 
-            gameState.GetPlayerCountry().RecentSituationSummary,
-            gameState.RecentGameEvents
-        );
+        var recentSituationSummary = "test";
+        // var recentSituationSummary = await recentSituationSummarizer.SummarizeAsync(
+        //     gameState.PlayerCountryCode, 
+        //     gameState.Turn, 
+        //     gameState.GetPlayerCountry().RecentSituationSummary,
+        //     gameState.RecentGameEvents
+        // );
         
         // Consume the current event
         gameState.CurrentGameEvent = null;
         
+        // Update player country resources
+        gameState.GetPlayerCountry().Resources.ApplyChanges(effects.ResourceChanges);
+
         // Update player country summary
         gameState.GetPlayerCountry().RecentSituationSummary = recentSituationSummary;
         
@@ -314,6 +323,7 @@ public class GameManager(
         }
         
         gameState.CurrentPhase = GamePhase.Start;
-        await context.Socket.SendTopic("C_UpdateState", gameState);
+        await context.Socket.SendTopic("C_UpdateGameState", gameState);
+        await context.Socket.SendTopic("C_NewTurn");
     }
 }

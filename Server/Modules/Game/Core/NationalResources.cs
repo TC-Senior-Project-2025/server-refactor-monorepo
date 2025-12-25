@@ -19,6 +19,7 @@ public class NationalResources
         Manpower += other.Manpower;
         Stability += other.Stability;
         Prestige += other.Prestige;
+        Efficiency += other.Efficiency;
     }
 
     public static NationalResources Zero()

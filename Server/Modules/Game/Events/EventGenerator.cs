@@ -52,10 +52,37 @@ public class EventGenerator(ILogger<EventGenerator> logger, ILlmService llmServi
                 logger.LogWarning("Other exception: {}", e);
             }
         }
-        return new GameEvent()
+        return new GameEvent
         {
             Title = "Fallback Event",
-            Description = "If you see this, it means that the system has failed to generate an event! We apologize for your inconvenience."
+            Description =
+                "If you see this, it means that the system has failed to generate an event! We apologize for your inconvenience.",
+            ResourceChanges = NationalResources.Zero(),
+        };
+    }
+
+    public async Task<GameEvent> GenerateEventExampleAsync()
+    {
+        await Task.Delay(1000);
+        return new GameEvent
+        {
+            Title = "Test Event",
+            Description = "Description goes here.",
+            Options = [
+                new GameEventOption
+                {
+                    Title = "Option 1",
+                    Description = "This is an example option."
+                }
+            ],
+            ResourceChanges = new NationalResources
+            {
+                Efficiency = -5,
+                Treasury = 999,
+                Manpower = 100,
+                Stability = -5,
+                Prestige = -5
+            }
         };
     }
     
@@ -64,7 +91,7 @@ public class EventGenerator(ILogger<EventGenerator> logger, ILlmService llmServi
     /// </summary>
     /// <param name="maxRetries"></param>
     /// <returns></returns>
-    public async Task<GameEventOptionEffects> GenerateEventOptionEffects(GameEventOption option, int maxRetries = 3)
+    public async Task<GameEventOptionEffects> GenerateEventOptionEffectsAsync(GameEventOption option, int maxRetries = 3)
     {
         var numRetries = 0;
         var prompt = BuildEventOptionEffectsPrompt(option);
@@ -104,7 +131,27 @@ public class EventGenerator(ILogger<EventGenerator> logger, ILlmService llmServi
         {
             Title = "Fallback Effect",
             Description = "If you see this, it means that the system has failed to generate option effects! We apologize for your inconvenience.",
-            FlagChangeset = new FlagChangeset()
+            FlagChangeset = new FlagChangeset(),
+            ResourceChanges = NationalResources.Zero()
+        };
+    }
+
+    public async Task<GameEventOptionEffects> GenerateEventOptionEffectsExampleAsync()
+    {
+        await Task.Delay(1000);
+        return new GameEventOptionEffects
+        {
+            Title = "Test Effect",
+            Description = "This is a test.",
+            FlagChangeset = new FlagChangeset(),
+            ResourceChanges = new NationalResources
+            {
+                Efficiency = 5,
+                Treasury = -500,
+                Manpower = -100,
+                Stability = -30,
+                Prestige = -20
+            },
         };
     }
 
@@ -124,7 +171,7 @@ public class EventGenerator(ILogger<EventGenerator> logger, ILlmService llmServi
                     Title = "Option 1 (Normal case)",
                     Description = "Option 1 description"
                 }
-            ]
+            ], ResourceChanges = NationalResources.Zero()
         };
         
         return PromptBuilder
@@ -140,6 +187,7 @@ public class EventGenerator(ILogger<EventGenerator> logger, ILlmService llmServi
                 .Bullet("Output must be a one-line JSON object.")
                 .Bullet("Generate concise descriptions for the event.")
                 .Bullet("Feel free to leave options empty (as an empty array) if it makes sense.")
+                .Bullet("Resource changes should correlate to the event contents (title, description).")
                 .JsonOnly()
                 .NoMarkdown()
             .End()
@@ -165,10 +213,18 @@ public class EventGenerator(ILogger<EventGenerator> logger, ILlmService llmServi
             Title = "Effect Title (TitleCase)",
             Description = "Effect description (should be less than 10 sentences)",
             FlagChangeset =
-                new FlagChangeset {
-                    Add = ["AtWar.Qin"],
-                    Remove = ["PromiseOfPeace"]
-                }
+                new FlagChangeset
+                {
+                    Add =
+                    [
+                        "AtWar.Qin"
+                    ],
+                    Remove =
+                    [
+                        "PromiseOfPeace"
+                    ]
+                },
+            ResourceChanges = NationalResources.Zero(),
         };
         
         return PromptBuilder

@@ -4,6 +4,7 @@ public class GameEvent
 {
     public required string Title { get; init; }
     public required string Description { get; init; }
+    public required NationalResources ResourceChanges { get; init; }
     public List<GameEventOption> Options { get; init; } = [];
 }
 
@@ -18,6 +19,7 @@ public class GameEventOptionEffects
     public required string Title { get; init; }
     public required string Description { get; init; }
     public required FlagChangeset FlagChangeset { get; init; } = new();
+    public required NationalResources ResourceChanges { get; init; }
 }
 
 public class FlagChangeset

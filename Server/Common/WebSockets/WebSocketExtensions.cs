@@ -29,4 +29,17 @@ public static class WebSocketExtensions
             true,
             CancellationToken.None);
     }
+    
+    public static async Task SendTopic(this WebSocket webSocket, string topic)
+    {
+        var response = new { Topic = topic };
+        var json = JsonSerializer.Serialize(response);
+        var bytes = Encoding.UTF8.GetBytes(json);
+        
+        await webSocket.SendAsync(
+            new ArraySegment<byte>(bytes),
+            WebSocketMessageType.Text,
+            true,
+            CancellationToken.None);
+    }
 }
