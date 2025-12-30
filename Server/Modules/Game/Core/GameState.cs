@@ -15,10 +15,10 @@ public class GameState
     /// </summary>
     public required int Turn { get; set; }
 
-    public required string PlayerCountryCode { get; init; }
+    public required int PlayerCountryId { get; init; }
 
-    public required Dictionary<string, Country> Countries { get; init; }
-    public required Dictionary<string, Commandery> Commanderies { get; init; }
+    public required Dictionary<int, Country> Countries { get; init; }
+    public required Dictionary<int, Commandery> Commanderies { get; init; }
     
     public GameEvent? CurrentGameEvent { get; set; } = null;
     
@@ -34,9 +34,9 @@ public class GameState
     /// <exception cref="InvalidOperationException">The country does not exist inside <c>Countries</c>. This is a game-breaking error.</exception>
     public Country GetPlayerCountry()
     {
-        if (!Countries.TryGetValue(PlayerCountryCode, out var country))
+        if (!Countries.TryGetValue(PlayerCountryId, out var country))
             throw new InvalidOperationException(
-                $"Player country '{PlayerCountryCode}' not found in game state.");
+                $"Player country '{PlayerCountryId}' not found in game state.");
         return country;
     }
     

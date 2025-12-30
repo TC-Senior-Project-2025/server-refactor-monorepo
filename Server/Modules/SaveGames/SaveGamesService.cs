@@ -23,7 +23,7 @@ public class SaveGamesService(
     public async Task<SaveGameEntity> Create(int userId, CreateSaveGameDto dto)
     {
         var countries = (await countriesService.GetCountries())
-            .ToDictionary(ce => ce.Code, ce => new Country
+            .ToDictionary(ce => ce.Id, ce => new Country
             {
                 Id = ce.Id,
                 Code = ce.Code,
@@ -40,7 +40,7 @@ public class SaveGamesService(
             });
 
         var commanderies = (await commanderiesService.GetCommanderies())
-            .ToDictionary(ce => ce.Code, ce => new Commandery
+            .ToDictionary(ce => ce.Id, ce => new Commandery
             {
                 Id = ce.Id,
                 Code = ce.Code,
@@ -50,7 +50,7 @@ public class SaveGamesService(
         var gameState = new GameState
         {
             Turn = 0,
-            PlayerCountryCode = "QIN",
+            PlayerCountryId = 7,
             Countries = countries,
             Commanderies = commanderies
         };

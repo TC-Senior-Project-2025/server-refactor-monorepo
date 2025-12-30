@@ -178,7 +178,7 @@ public class EventGenerator(ILogger<EventGenerator> logger, ILlmService llmServi
             .Create()
             .AsSystem("You are an event generator for a turn-based nation management game set during the Chinese Warring States period. You generate plausible, historically grounded events.")
             .Context()
-                .Bullet($"Nation Code: {gameState.PlayerCountryCode}")
+                .Bullet($"Nation: {gameState.GetPlayerCountry().Name}")
                 .Bullet($"Turn: {gameState.Turn}")
                 .Bullet($"Recent Situation Summary (may be empty): {gameState.GetPlayerCountry().RecentSituationSummary}")
             .End()
