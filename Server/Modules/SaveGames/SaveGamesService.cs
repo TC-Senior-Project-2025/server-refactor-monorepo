@@ -6,6 +6,8 @@ using Server.Modules.Countries;
 using Server.Modules.Game.Core;
 using Server.Modules.SaveGames.Dto;
 using Server.Modules.SaveGames.Entities;
+using Commandery = Server.Modules.Game.Core.Commandery;
+using Country = Server.Modules.Game.Core.Country;
 
 namespace Server.Modules.SaveGames;
 
@@ -23,7 +25,7 @@ public class SaveGamesService(
     public async Task<SaveGameEntity> Create(int userId, CreateSaveGameDto dto)
     {
         var countries = (await countriesService.GetCountries())
-            .ToDictionary(ce => ce.Id, ce => new Country
+            .ToDictionary(ce => ce.Id, ce => new Country()
             {
                 Id = ce.Id,
                 Code = ce.Code,
@@ -40,7 +42,7 @@ public class SaveGamesService(
             });
 
         var commanderies = (await commanderiesService.GetCommanderies())
-            .ToDictionary(ce => ce.Id, ce => new Commandery
+            .ToDictionary(ce => ce.Id, ce => new Commandery()
             {
                 Id = ce.Id,
                 Code = ce.Code,
