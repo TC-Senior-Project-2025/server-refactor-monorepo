@@ -333,32 +333,17 @@ public class GameManager(
                     gameState.GetPlayerCountry().Resources.Manpower += 20;
                     break;
                 }
-            case PlayerActionType.MoveUnit:
+            case PlayerActionType.MoveUnits:
                 {
-                    MoveUnitDto? payload;
+                    MoveUnitsDto? payload;
                     try
                     {
-                        payload = playerAction.ParsePayload<MoveUnitDto>() ?? throw new Exception("Parsed payload is null");
+                        payload = playerAction.ParsePayload<MoveUnitsDto>() ?? throw new Exception("Parsed payload is null");
                     }
                     catch (Exception e)
                     {
                         logger.LogError("Failed to parse payload: {Error}", e);
                         await SendError(context.Socket, "Failed to parse payload");
-                        return;
-                    }
-
-                    var unit = gameState.Units.Find(u => u.Id == payload.UnitId);
-                    if (unit == null)
-                    {
-                        logger.LogError("Unit {} does not exist", payload.UnitId);
-                        await SendError(context.Socket, "Unit does not exist");
-                        return;
-                    }
-
-                    if (!gameState.Commanderies.ContainsKey(unit.LocationId))
-                    {
-                        logger.LogError("Commandery {} does not exist", payload.LocationId);
-                        await SendError(context.Socket, "Commandery does not exist");
                         return;
                     }
 
@@ -370,14 +355,44 @@ public class GameManager(
                         return;
                     }
 
-                    if (!connections.IsNeighborOf(unit.LocationId, payload.LocationId))
+                    List<(Unit, int)> unitsToMove = []; 
+                    foreach (var (unitId, locationId) in payload.UnitMovements)
                     {
-                        logger.LogError("{} is not a neighbor of {}, cannot move unit", unit.LocationId, payload.LocationId);
-                        await SendError(context.Socket, "Cannot move to target location");
-                        return;
+                        var unit = gameState.Units.Find(u => u.Id == unitId);
+                        
+                        if (unit == null)
+                        {
+                            logger.LogError("Unit {} does not exist", unitId);
+                            await SendError(context.Socket, "Unit does not exist");
+                            return;
+                        }
+                        
+                        if (!gameState.Commanderies.ContainsKey(locationId))
+                        {
+                            logger.LogError("Commandery {} does not exist", locationId);
+                            await SendError(context.Socket, "Commandery does not exist");
+                            return;
+                        }
+
+                        if (!connections.IsNeighborOf(unit.LocationId, locationId))
+                        {
+                            logger.LogError("{SrcId} is not a neighbor of {DstId}, cannot move unit", 
+                                unit.LocationId, 
+                                locationId
+                            );
+                            await SendError(context.Socket, "Cannot move to target location");
+                            return;
+                        }
+                        
+                        unitsToMove.Add((unit, locationId));
                     }
 
-                    unit.LocationId = payload.LocationId;
+                    foreach (var pair in unitsToMove)
+                    {
+                        var (unit, locationId) = pair;
+                        unit.LocationId = locationId;
+                    }
+                    
                     break;
                 }
             default:
