@@ -44,13 +44,16 @@ public class SaveGamesService(
             {
                 Id = ce.Id,
                 Code = ce.Code,
-                Name = ce.Name
+                Name = ce.Name,
+                Population = ce.Population
             });
+        
+        Console.WriteLine(commanderies[1].Name);
         
         var gameState = new GameState
         {
             Turn = 0,
-            PlayerCountryId = 7,
+            PlayerCountryId = 1,
             Countries = countries,
             Commanderies = commanderies
         };

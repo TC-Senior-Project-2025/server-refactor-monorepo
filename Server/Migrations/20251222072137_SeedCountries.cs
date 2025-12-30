@@ -12,15 +12,15 @@ namespace Server.Migrations
         {
             migrationBuilder
                 .Sql("""
-                     INSERT INTO "countries" ("code", "name", "efficiency", "treasury", "stability", "manpower", "prestige")
+                     INSERT INTO "countries" ("id", "code", "name", "efficiency", "treasury", "stability", "manpower", "prestige")
                      VALUES 
-                         ('CHU', 'Chu', 60, 200, 75, 1000, 75),
-                         ('QI',	'Qi', 70, 250, 80, 600, 80),
-                         ('ZHAO', 'Zhao', 70, 150, 65, 500,	65),
-                         ('WEI', 'Wei', 65,	120, 60, 300, 60),
-                         ('YAN', 'Yan', 50, 100, 55, 300, 55),
-                         ('HAN', 'Han', 55, 80, 60, 300, 60),
-                         ('QIN', 'Qin', 95, 300, 80, 1000,	80);
+                         (2, 'CHU', 'Chu', 60, 200, 75, 1000, 75),
+                         (3, 'QI',	'Qi', 70, 250, 80, 600, 80),
+                         (4, 'ZHAO', 'Zhao', 70, 150, 65, 500,	65),
+                         (5, 'WEI', 'Wei', 65,	120, 60, 300, 60),
+                         (6, 'YAN', 'Yan', 50, 100, 55, 300, 55),
+                         (7, 'HAN', 'Han', 55, 80, 60, 300, 60),
+                         (1, 'QIN', 'Qin', 95, 300, 80, 1000,	80);
                      """);
             
             // CHU History
