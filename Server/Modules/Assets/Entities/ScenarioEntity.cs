@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Server.Modules.Scenarios.Entities;
+namespace Server.Modules.Assets.Entities;
 
 public class Scenario
 {
@@ -14,10 +14,10 @@ public class Scenario
 
     [JsonPropertyName("commanderies")] public List<Commandery> Commanderies { get; set; }
 
-    [JsonPropertyName("armies")] public List<Army> Armies { get; set; }
+    [JsonPropertyName("units")] public List<Unit> Units { get; set; }
 }
 
-public class Army
+public class Unit
 {
     [JsonPropertyName("id")] public int Id { get; set; }
 

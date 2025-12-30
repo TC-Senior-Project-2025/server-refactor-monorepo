@@ -1,9 +1,8 @@
 using Server.Common.Config;
 using Server.Common.Database;
 using Server.Common.Llm;
+using Server.Modules.Assets;
 using Server.Modules.Auth;
-using Server.Modules.Commanderies;
-using Server.Modules.Countries;
 using Server.Modules.Game;
 using Server.Modules.SaveGames;
 using Server.Modules.Users;
@@ -32,8 +31,7 @@ public static class AppModule
         GameModule.Register(services);
         AuthModule.Register(services);
         SaveGamesModule.Register(services);
-        CountriesModule.Register(services);
-        CommanderiesModule.Register(services);
+        AssetsModule.Register(services);
 
         // Framework Services
         services.AddControllers().AddJsonOptions(o =>

@@ -1,21 +1,20 @@
-﻿using Moq;
-using Server.Common.Database;
-using Server.Modules.Commanderies;
-using Server.Modules.Countries;
-using Server.Modules.SaveGames;
-using Server.Modules.Scenarios;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
+using Server.Modules.Assets;
 
 namespace Tests.Unit;
 
 [TestFixture]
-public class ScenariosServiceTests
+public class AssetsServiceTests
 {
-    private ScenariosService _sut;
+    private AssetsService _sut;
+    private Mock<ILogger<AssetsService>> _logger;
 
     [SetUp]
     public void Setup()
     {
-        _sut = new ScenariosService();
+        _logger = new Mock<ILogger<AssetsService>>();
+        _sut = new AssetsService(_logger.Object);
     }
 
     [Test]

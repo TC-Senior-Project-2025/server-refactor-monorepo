@@ -26,6 +26,7 @@ public class GameState
     public List<RecentEvent> RecentGameEvents { get; init; } = [];
 
     public GamePhase CurrentPhase { get; set; } = GamePhase.Start;
+    public required List<Unit> Units { get; set; }
     
     /// <summary>
     /// Gets the domain-layer player country instance, based on the player's country code.

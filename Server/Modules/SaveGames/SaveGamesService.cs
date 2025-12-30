@@ -1,13 +1,10 @@
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Server.Common.Database;
-using Server.Modules.Commanderies;
-using Server.Modules.Countries;
+using Server.Modules.Assets;
 using Server.Modules.Game.Core;
 using Server.Modules.SaveGames.Dto;
 using Server.Modules.SaveGames.Entities;
-using Commandery = Server.Modules.Game.Core.Commandery;
-using Country = Server.Modules.Game.Core.Country;
 
 namespace Server.Modules.SaveGames;
 
@@ -15,16 +12,22 @@ namespace Server.Modules.SaveGames;
 /// Service for managing user save games.
 /// </summary>
 public class SaveGamesService(
-    AppDbContext dbContext, 
-    CountriesService countriesService, 
-    CommanderiesService commanderiesService)
+    AppDbContext dbContext,
+    AssetsService assetsService)
 {
     /// <summary>
     /// Creates a new save game for a user.
     /// </summary>
     public async Task<SaveGameEntity> Create(int userId, CreateSaveGameDto dto)
     {
-        var countries = (await countriesService.GetCountries())
+        // TODO: Variable scenario name
+        var scenario = assetsService.LoadScenario("default_scenario");
+        if (scenario == null)
+        {
+            throw new InvalidOperationException("Default scenario not found");
+        }
+        
+        var countries = scenario.Countries
             .ToDictionary(ce => ce.Id, ce => new Country()
             {
                 Id = ce.Id,
@@ -38,10 +41,10 @@ public class SaveGamesService(
                     Stability = ce.Stability,
                     Prestige = ce.Prestige
                 },
-                RecentSituationSummary = ce.HistorySummary
+                RecentSituationSummary = ce.History
             });
 
-        var commanderies = (await commanderiesService.GetCommanderies())
+        var commanderies = scenario.Commanderies
             .ToDictionary(ce => ce.Id, ce => new Commandery()
             {
                 Id = ce.Id,
@@ -49,15 +52,27 @@ public class SaveGamesService(
                 Name = ce.Name,
                 Population = ce.Population
             });
-        
-        Console.WriteLine(commanderies[1].Name);
-        
+
+        var units = scenario.Units.Select(u => new Unit
+        {
+            Id = u.Id,
+            CountryId = u.CountryId,
+            CommanderId = u.CommanderId,
+            LocationId = u.LocationId,
+            Name = u.Name,
+            Size = u.Size,
+            Morale = u.Morale,
+            Supply = u.Supply,
+            History = u.History
+        }).ToList();
+
         var gameState = new GameState
         {
             Turn = 0,
             PlayerCountryId = 1,
             Countries = countries,
-            Commanderies = commanderies
+            Commanderies = commanderies,
+            Units = units
         };
 
         var saveGame = new SaveGameEntity

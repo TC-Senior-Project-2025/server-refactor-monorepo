@@ -2,5 +2,6 @@
 
 public enum PlayerActionType
 {
-    IncreaseMilitaryBudget
+    IncreaseMilitaryBudget,
+    MoveUnit
 }

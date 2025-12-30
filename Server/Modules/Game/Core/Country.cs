@@ -1,6 +1,4 @@
-﻿using Server.Modules.Countries.Entities;
-
-namespace Server.Modules.Game.Core;
+﻿namespace Server.Modules.Game.Core;
 
 public class Country
 {
