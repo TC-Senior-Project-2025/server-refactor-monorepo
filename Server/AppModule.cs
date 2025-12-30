@@ -2,6 +2,7 @@ using Server.Common.Config;
 using Server.Common.Database;
 using Server.Common.Llm;
 using Server.Modules.Auth;
+using Server.Modules.Commanderies;
 using Server.Modules.Countries;
 using Server.Modules.Game;
 using Server.Modules.SaveGames;
@@ -32,6 +33,7 @@ public static class AppModule
         AuthModule.Register(services);
         SaveGamesModule.Register(services);
         CountriesModule.Register(services);
+        CommanderiesModule.Register(services);
 
         // Framework Services
         services.AddControllers().AddJsonOptions(o =>

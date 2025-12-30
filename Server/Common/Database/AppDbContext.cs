@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Server.Modules.Auth.Entities;
+using Server.Modules.Commanderies.Entities;
 using Server.Modules.Countries.Entities;
 using Server.Modules.SaveGames.Entities;
 using Server.Modules.Users.Entities;
@@ -29,4 +30,9 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     /// Gets or sets the Countries table.
     /// </summary>
     public DbSet<CountryEntity> Countries { get; set; } = null!;
+    
+    /// <summary>
+    /// Gets or sets the Countries table.
+    /// </summary>
+    public DbSet<CommanderyEntity> Commanderies { get; set; } = null!;
 }

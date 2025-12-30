@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Server.Common.Database;
+using Server.Modules.Commanderies;
 using Server.Modules.Countries;
 using Server.Modules.Game.Core;
 using Server.Modules.SaveGames.Dto;
@@ -11,7 +12,10 @@ namespace Server.Modules.SaveGames;
 /// <summary>
 /// Service for managing user save games.
 /// </summary>
-public class SaveGamesService(AppDbContext dbContext, CountriesService countriesService)
+public class SaveGamesService(
+    AppDbContext dbContext, 
+    CountriesService countriesService, 
+    CommanderiesService commanderiesService)
 {
     /// <summary>
     /// Creates a new save game for a user.
@@ -21,6 +25,7 @@ public class SaveGamesService(AppDbContext dbContext, CountriesService countries
         var countries = (await countriesService.GetCountries())
             .ToDictionary(ce => ce.Code, ce => new Country
             {
+                Id = ce.Id,
                 Code = ce.Code,
                 Name = ce.Name,
                 Resources = new NationalResources
@@ -33,12 +38,21 @@ public class SaveGamesService(AppDbContext dbContext, CountriesService countries
                 },
                 RecentSituationSummary = ce.HistorySummary
             });
+
+        var commanderies = (await commanderiesService.GetCommanderies())
+            .ToDictionary(ce => ce.Code, ce => new Commandery
+            {
+                Id = ce.Id,
+                Code = ce.Code,
+                Name = ce.Name
+            });
         
         var gameState = new GameState
         {
             Turn = 0,
             PlayerCountryCode = "QIN",
             Countries = countries,
+            Commanderies = commanderies
         };
 
         var saveGame = new SaveGameEntity

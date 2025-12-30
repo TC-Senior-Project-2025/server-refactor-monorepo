@@ -18,6 +18,7 @@ public class GameState
     public required string PlayerCountryCode { get; init; }
 
     public required Dictionary<string, Country> Countries { get; init; }
+    public required Dictionary<string, Commandery> Commanderies { get; init; }
     
     public GameEvent? CurrentGameEvent { get; set; } = null;
     

@@ -48,6 +48,57 @@ namespace Server.Migrations
                     b.ToTable("user_tokens");
                 });
 
+            modelBuilder.Entity("Server.Modules.Commanderies.Entities.CommanderyEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("code");
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("integer")
+                        .HasColumnName("country_id");
+
+                    b.Property<int>("Defense")
+                        .HasColumnType("integer")
+                        .HasColumnName("defense");
+
+                    b.Property<string>("History")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("history");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name");
+
+                    b.Property<int>("Population")
+                        .HasColumnType("integer")
+                        .HasColumnName("population");
+
+                    b.Property<int>("Unrest")
+                        .HasColumnType("integer")
+                        .HasColumnName("unrest");
+
+                    b.Property<int>("Wealth")
+                        .HasColumnType("integer")
+                        .HasColumnName("wealth");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("commanderies");
+                });
+
             modelBuilder.Entity("Server.Modules.Countries.Entities.CountryEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -179,6 +230,17 @@ namespace Server.Migrations
                         .IsRequired();
 
                     b.Navigation("UserEntity");
+                });
+
+            modelBuilder.Entity("Server.Modules.Commanderies.Entities.CommanderyEntity", b =>
+                {
+                    b.HasOne("Server.Modules.Countries.Entities.CountryEntity", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
                 });
 
             modelBuilder.Entity("Server.Modules.SaveGames.Entities.SaveGameEntity", b =>
