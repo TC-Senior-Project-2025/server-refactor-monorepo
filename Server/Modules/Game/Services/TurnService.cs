@@ -132,7 +132,6 @@ public static class TurnService
         // Process people
         var deadPeople = new List<Person>();
         var deadKings = new List<Person>();
-
         foreach (var person in gameState.People)
         {
             var country = gameState.Countries[person.CountryId];

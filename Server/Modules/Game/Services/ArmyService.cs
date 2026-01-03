@@ -9,9 +9,9 @@ public static class ArmyService
     public const int SupplyDecay = 30;
     public const int Attrition = 10;
 
-    public static int CalculateManpowerGain(float efficiency, Commandery commandery)
+    public static int CalculateManpowerGain(int efficiency, Commandery commandery)
     {
-        var manpower = efficiency
+        var manpower = efficiency * 0.01f
             * commandery.Population / ManpowerDivisor
             * (12 - commandery.Unrest) / 10.0f;
         return (int)manpower;

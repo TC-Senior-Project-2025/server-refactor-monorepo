@@ -6,9 +6,9 @@ public static class TaxService
 {
     private const float TaxDivisor = 12 * 100000;
 
-    public static int CalculateTax(float efficiency, List<Commandery> commanderies)
+    public static int CalculateTax(int efficiency, List<Commandery> commanderies)
     {
-        var tax = efficiency * commanderies
+        var tax = efficiency * 0.01f * commanderies
             .Select(p =>
             {
                 var unrestTaxBurden = 1.0f;
