@@ -28,6 +28,8 @@ public class GameState
     public GamePhase CurrentPhase { get; set; } = GamePhase.Start;
     public required List<Unit> Units { get; set; }
 
+    public required List<Person> People { get; set; }
+
     /// <summary>
     /// Gets the domain-layer player country instance, based on the player's country code.
     /// </summary>

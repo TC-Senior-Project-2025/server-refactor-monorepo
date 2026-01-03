@@ -10,6 +10,8 @@ public static class TurnService
         public int ManpowerGrowth { get; set; }
         public int PopulationGrowth { get; set; }
         public int ArmyExpenses { get; set; }
+        public List<Person> DeadPeople { get; set; } = [];
+        public List<Person> DeadKings { get; set; } = [];
     }
 
     public static TurnProcessResult ProcessTurn(GameState gameState)
@@ -17,6 +19,7 @@ public static class TurnService
         var result = new TurnProcessResult();
         Random rng = new();
 
+        // Process countries
         foreach (var country in gameState.Countries.Values)
         {
             var commanderies = gameState.Commanderies.Values.Where(p => p.CountryId == country.Id).ToList();
@@ -79,6 +82,7 @@ public static class TurnService
             }
         }
 
+        // Process units
         foreach (var unit in gameState.Units)
         {
             var country = gameState.Countries[unit.CountryId];
@@ -124,6 +128,57 @@ public static class TurnService
         // Destroy all units with size = 0
         var destroyedUnits = gameState.Units.Where(u => u.Size <= 0).ToList();
         gameState.Units.RemoveAll(u => u.Size <= 0);
+
+        // Process people
+        var deadPeople = new List<Person>();
+        var deadKings = new List<Person>();
+
+        foreach (var person in gameState.People)
+        {
+            var country = gameState.Countries[person.CountryId];
+
+            // Prestige effects on loyalty
+            if (country.Resources.Prestige > 80 && country.Resources.Prestige > person.Loyalty)
+            {
+                person.Loyalty += 1;
+            }
+            else if (country.Resources.Prestige > 50)
+            {
+                if (rng.Next(0, 101) < country.Resources.Prestige)
+                {
+                    person.Loyalty += 1;
+                }
+            }
+            else if (country.Resources.Prestige < 25)
+            {
+                if (rng.Next(0, 101) > country.Resources.Prestige)
+                {
+                    person.Loyalty -= 1;
+                }
+            }
+
+            // Check for death
+            if (PersonService.DeathTick(person.Age, rng))
+            {
+                if (person.Role.Equals("King", StringComparison.OrdinalIgnoreCase))
+                {
+                    deadKings.Add(person);
+                }
+                else
+                {
+                    deadPeople.Add(person);
+                }
+            }
+            else
+            {
+                // TODO: Implement aging logic
+            }
+        }
+
+        // TODO: Implement country annex logic
+
+        result.DeadPeople = deadPeople;
+        result.DeadKings = deadKings;
 
         return result;
     }

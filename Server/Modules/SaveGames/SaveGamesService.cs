@@ -69,13 +69,26 @@ public class SaveGamesService(
             History = u.History
         }).ToList();
 
+        var people = scenario.Person.Select(u => new Person
+        {
+            Id = u.Id,
+            CountryId = u.CountryId,
+            Name = u.Name,
+            Age = u.Age,
+            IsAlive = u.IsAlive,
+            Loyalty = u.Loyalty,
+            Role = u.Role,
+            History = u.History
+        }).ToList();
+
         var gameState = new GameState
         {
             Turn = 0,
             PlayerCountryId = 1,
             Countries = countries,
             Commanderies = commanderies,
-            Units = units
+            Units = units,
+            People = people
         };
 
         var saveGame = new SaveGameEntity
