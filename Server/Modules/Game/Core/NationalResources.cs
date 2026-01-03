@@ -22,6 +22,36 @@ public class NationalResources
         Efficiency += other.Efficiency;
     }
 
+    public NationalResources SetEfficiency(Func<int, int> func)
+    {
+        Efficiency = func(Efficiency);
+        return this;
+    }
+
+    public NationalResources SetTreasury(Func<int, int> func)
+    {
+        Treasury = func(Treasury);
+        return this;
+    }
+
+    public NationalResources SetManpower(Func<int, int> func)
+    {
+        Manpower = func(Manpower);
+        return this;
+    }
+
+    public NationalResources SetStability(Func<int, int> func)
+    {
+        Stability = func(Stability);
+        return this;
+    }
+
+    public NationalResources SetPrestige(Func<int, int> func)
+    {
+        Prestige = func(Prestige);
+        return this;
+    }
+
     public static NationalResources Zero()
     {
         return new NationalResources

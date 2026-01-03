@@ -1,28 +1,33 @@
 ﻿{
-  "game": {
-    "id": 0,
-    "name": "Set Up",
-    "turn": 0,
-    "current_year": -247,
-    "current_month": 7,
-    "months_per_turn": 1,
-    "created_at": "2025-12-02 11:35:06.678011+07",
-    "updated_at": "2025-12-02 11:35:06.678011+07",
-    "history": "In 247 BCE the old Zhou dynasty is defunct and seven rival kingdoms vie for supremacy. Qin towers over all – its 13‑year‑old king Ying Zheng sits on the throne under his regent, Chancellor Lü Buwei , presiding over the Legalist state born of Shang Yang’s reforms. Qin’s economy is highly organized, its bureaucracy centralized, and its armies have repeatedly campaigned in recent years under Lü’s leadership . By contrast the other states are fractured. Chu is vast and populous under King Kaolie, with the experienced Lord Chunshen (Huang Xie) as prime minister . Wei remains prosperous with powerful ministers like Lord Xinling (Wei Wuji) and his retainers . Qi is rich and coastal, “one of the wealthiest states” far from Qin’s heartland , but its young king Jian has been cautious – after the Zhao debacle of 260 BC (Changping) his court avoided war, content to guard its own lands . Zhao itself was crippled by Changping: King Xiaocheng inherited a state with its army shattered and core territories lost to Qin . The northmost states Yan and Han are smaller and peripheral. Yan’s King Xi rules from Ji (Beijing) and has generals pushing against nomadic tribes, but Yan has long been locked in stalemate wars with neighboring Zhao and Qi . Han, sandwiched in the Central Plains, is weak – it even lost the strategic Shangdang region to Qin in 260 BC – and now relies on diplomacy with Wei/Zhao for its survival. In sum, Qin is legally and militarily dominant, while the others hold on through alliances and local power. All eyes are on Qin’s young king and what its neighbors will do in response."
-  },
-  "countries": [
+  "game": [
+    {
+      "id": 0,
+      "turn": 1,
+      "current_year": -247,
+      "current_month": 8,
+      "months_per_turn": 1,
+      "history": "In 247 BCE the old Zhou dynasty is defunct and seven rival kingdoms vie for supremacy. Qin towers over all \u2013 its 13\u2011year\u2011old king Ying Zheng sits on the throne under his regent, Chancellor L\u00FC Buwei , presiding over the Legalist state born of Shang Yang\u2019s reforms. Qin\u2019s economy is highly organized, its bureaucracy centralized, and its armies have repeatedly campaigned in recent years under L\u00FC\u2019s leadership . By contrast the other states are fractured. Chu is vast and populous under King Kaolie, with the experienced Lord Chunshen (Huang Xie) as prime minister . Wei remains prosperous with powerful ministers like Lord Xinling (Wei Wuji) and his retainers . Qi is rich and coastal, \u201Cone of the wealthiest states\u201D far from Qin\u2019s heartland , but its young king Jian has been cautious \u2013 after the Zhao debacle of 260 BC (Changping) his court avoided war, content to guard its own lands . Zhao itself was crippled by Changping: King Xiaocheng inherited a state with its army shattered and core territories lost to Qin . The northmost states Yan and Han are smaller and peripheral. Yan\u2019s King Xi rules from Ji (Beijing) and has generals pushing against nomadic tribes, but Yan has long been locked in stalemate wars with neighboring Zhao and Qi . Han, sandwiched in the Central Plains, is weak \u2013 it even lost the strategic Shangdang region to Qin in 260 BC \u2013 and now relies on diplomacy with Wei/Zhao for its survival. In sum, Qin is legally and militarily dominant, while the others hold on through alliances and local power. All eyes are on Qin\u2019s young king and what its neighbors will do in response.",
+      "name": "Set Up",
+      "created_at": "2025-12-02 11:35:06.678011\u002B07",
+      "updated_at": "2025-12-02 11:35:06.678011\u002B07"
+    }
+  ],
+  "country": [
     {
       "id": 1,
       "game_id": 0,
       "code": "QIN",
       "name": "Qin",
       "is_player": true,
-      "efficiency": 95,
-      "treasury": 6000,
+      "efficiency": 92,
+      "treasury": 6461,
       "stability": 80,
-      "manpower": 900000,
-      "prestige": 80,
-      "history": "Qin stands at a historic peak, having secured the Sichuan Basin and the Yellow River heartlands. Its Legalist reforms have created a formidable war machine. However, the state is in a delicate transition. The new king, Ying Zheng, is only 13, and real power rests with the regent Lü Buwei. The immediate strategic pause allows for internal consolidation, but the foundational policy of relentless eastern expansion remains unchanged. The recent conquests of Zhou lands and incursions into Han and Wei demonstrate this momentum. Qin's key challenge is managing this internal regency while keeping its strategic advantage."
+      "manpower": 905730,
+      "prestige": 79,
+      "mission_point": 1,
+      "last_turn_gold_income": 600,
+      "last_turn_manpower_income": 5730,
+      "history": "In July 247 BCE, Chancellor L\u00FC Buwei presented the \u0027L\u00FCshi Chunqiu\u0027 to the court. King Ying Zheng\u0027s scholars were ordered to review the text, asserting royal scrutiny over the regent and slightly improving administrative efficiency."
     },
     {
       "id": 2,
@@ -31,11 +36,14 @@
       "name": "Chu",
       "is_player": false,
       "efficiency": 60,
-      "treasury": 4500,
-      "stability": 75,
-      "manpower": 1000000,
-      "prestige": 75,
-      "history": "Chu remains a territorial giant, controlling the fertile Yangtze basin. However, it is a kingdom with profound structural weaknesses. It lost its original capital and western heartland to Qin decades earlier, a deep national trauma. Its vast size makes centralized control difficult, leading to potential regionalism. While rich in resources and population, Chu struggles to project its full power efficiently. Its strategy is often reactive, focusing on defending its long borders. To resist Qin, Chu must overcome its internal fragmentation and form solid northern alliances, a task complicated by its physical and cultural distance from the central states."
+      "treasury": 4596,
+      "stability": 78,
+      "manpower": 1003869,
+      "prestige": 74,
+      "mission_point": 1,
+      "last_turn_gold_income": 304,
+      "last_turn_manpower_income": 3869,
+      "history": "Faced with complaints from former Yue territories regarding tax burdens, the crown granted local exemptions in southern commanderies, trading treasury funds for improved internal stability."
     },
     {
       "id": 3,
@@ -44,11 +52,14 @@
       "name": "Qi",
       "is_player": false,
       "efficiency": 70,
-      "treasury": 5500,
+      "treasury": 5448,
       "stability": 80,
-      "manpower": 500000,
-      "prestige": 80,
-      "history": "Qi is the economic powerhouse of the era, enriched by salt, trade, and advanced agriculture on the Shandong peninsula. It has pursued a policy of neutrality and self-preservation for decades, avoiding the devastating wars that consumed its rivals. This has left Qi wealthy, stable, and complacent. Its military, while potentially well-funded, lacks recent large-scale combat experience. Politically, Qi is dangerously isolated, having betrayed past coalitions. Its court, possibly influenced by ministers susceptible to Qin bribes, believes its wealth and distance will ensure safety—a grave strategic miscalculation as Qin systematically eliminates all other rivals."
+      "manpower": 503054,
+      "prestige": 82,
+      "mission_point": 1,
+      "last_turn_gold_income": 294,
+      "last_turn_manpower_income": 3054,
+      "history": "The state hosted a massive festival organized by Princess Tian Wan in Linzi, emphasizing Qi\u0027s great wealth and prestige at a significant cost to the treasury."
     },
     {
       "id": 4,
@@ -57,11 +68,14 @@
       "name": "Zhao",
       "is_player": false,
       "efficiency": 70,
-      "treasury": 3000,
-      "stability": 65,
-      "manpower": 300000,
-      "prestige": 65,
-      "history": "Zhao is the primary bulwark against Qin, but it is a shadow of its former self. The catastrophic defeat at Changping in 260 BCE, where an army of hundreds of thousands was lost, crippled a generation of manpower. Since then, Zhao has been in a fragile recovery, relying on the defensive genius of General Li Mu to hold the northern frontier and check Qin advances. The state retains a core of military excellence and a defiant spirit, but its economy and population are severely depleted. Its survival depends on Li Mu's skill and the ability to form strong coalitions with other states before Qin's next major offensive."
+      "treasury": 3119,
+      "stability": 63,
+      "manpower": 302082,
+      "prestige": 64,
+      "mission_point": 1,
+      "last_turn_gold_income": 195,
+      "last_turn_manpower_income": 2082,
+      "history": "Political instability grew as King Xiaocheng heeded the corrupt whispers of Guo Kai, choosing to reduce funding for General Li Mu\u0027s forces, which lowered military morale and state stability."
     },
     {
       "id": 5,
@@ -69,12 +83,15 @@
       "code": "WEI",
       "name": "Wei",
       "is_player": false,
-      "efficiency": 65,
-      "treasury": 2500,
+      "efficiency": 68,
+      "treasury": 2511,
       "stability": 60,
-      "manpower": 200000,
-      "prestige": 60,
-      "history": "Wei is a classic middle power in severe decline. Once the leading state a century prior, it has been relentlessly squeezed by Qin, losing its western territories around the old capital of Anyi. Its position in the central plains makes it vulnerable on multiple fronts. Wei's main hope lies in diplomacy and the prestige of figures like Prince Wei Wuji (Lord Xinling), who had previously led successful coalition armies against Qin. In 247 BCE, Wei's strategy is one of desperate alliance-building. It must bind Zhao, Han, and Chu together to create a viable defensive front, as standing alone against Qin is no longer possible."
+      "manpower": 201049,
+      "prestige": 59,
+      "mission_point": 1,
+      "last_turn_gold_income": 142,
+      "last_turn_manpower_income": 1049,
+      "history": "Wei subsidized the estate of Lord Xinling to maintain his circle of talented retainers, enhancing the state\u0027s administrative efficiency despite the cost."
     },
     {
       "id": 6,
@@ -83,11 +100,14 @@
       "name": "Yan",
       "is_player": false,
       "efficiency": 50,
-      "treasury": 2000,
+      "treasury": 1986,
       "stability": 55,
-      "manpower": 200000,
+      "manpower": 200409,
       "prestige": 55,
-      "history": "Yan is a remote northeastern state with limited population and resources, primarily focused on defending its frontier against nomadic steppe peoples. Its historical rivalry is with Zhao, not Qin. Seeing Zhao's profound weakness after Changping, Yan's leadership likely sees an opportunity to settle old scores or gain territory, a shortsighted strategy that plays directly into Qin's \"divide and conquer\" playbook. Yan's peripheral location might give it a false sense of security from the Qin threat. Its key figures are King Xi and the young Crown Prince Dan, the latter already harboring a deep, personal animosity toward Qin and its king."
+      "mission_point": 1,
+      "last_turn_gold_income": 30,
+      "last_turn_manpower_income": 409,
+      "history": "Tensions rose in the northeast following a border skirmish with Zhao. King Xi\u0027s demand for reparations increased Yan\u0027s prestige but soured relations with its neighbor."
     },
     {
       "id": 7,
@@ -95,1314 +115,1974 @@
       "code": "HAN",
       "name": "Han",
       "is_player": false,
-      "efficiency": 55,
-      "treasury": 1500,
-      "stability": 60,
-      "manpower": 200000,
-      "prestige": 60,
-      "history": "Han is in an existential crisis. As the smallest of the seven states, it has borne the brunt of Qin's initial eastward expansion, losing key territories like Shangdang and Nanyang. By 247 BCE, Han is a rump state, geographically surrounded and politically paralyzed. Its military is negligible against Qin's might. Survival depends entirely on two unstable pillars: offering further territorial concessions to buy brief respites, and fervent diplomacy to drag Wei and Zhao into fighting its battles. Han's fate is the most clearly sealed; it is not a question of if Qin will conquer Han, but when."
+      "efficiency": 60,
+      "treasury": 1587,
+      "stability": 57,
+      "manpower": 201064,
+      "prestige": 59,
+      "mission_point": 1,
+      "last_turn_gold_income": 122,
+      "last_turn_manpower_income": 1064,
+      "history": "The court began a period of administrative reform following the study of Han Fei\u0027s \u0027Five Vermin\u0027 treatise, increasing state efficiency while aggravating the traditional nobility."
+    },
+    {
+      "id": 99,
+      "game_id": 0,
+      "code": "REB",
+      "name": "Rebels",
+      "is_player": false,
+      "efficiency": 0,
+      "treasury": 0,
+      "stability": 1,
+      "manpower": 0,
+      "prestige": 0,
+      "mission_point": 1,
+      "last_turn_gold_income": 0,
+      "last_turn_manpower_income": 0,
+      "history": "In case of Rebellion, either by a person loyalty dropping low while having power, or a commandery unrest being too high, rebelling forces could join this faction. Else Ignore this faction."
     }
   ],
-  "relations": [
+  "relation": [
     {
-      "game_id": 0,
       "src_country": 1,
       "dst_country": 2,
       "value": -20,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Tense: Qin expanding southward; rivalry with Chu."
+      "history": "Tense: Qin expanding southward; rivalry with Chu.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 2,
       "dst_country": 1,
       "value": -20,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Tense: Qin expansion threatens Chu."
+      "history": "Tense: Qin expansion threatens Chu.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 1,
       "dst_country": 3,
       "value": -5,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Cautious/competitive: limited direct conflict with Qi."
+      "history": "Cautious/competitive: limited direct conflict with Qi.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 3,
       "dst_country": 1,
       "value": -5,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Cautious/competitive: Qin a rising power in the west."
+      "history": "Cautious/competitive: Qin a rising power in the west.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 1,
       "dst_country": 4,
       "value": -40,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Hostile: legacy of the Battle of Changping and border enmity with Zhao."
+      "history": "Hostile: legacy of the Battle of Changping and border enmity with Zhao.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 4,
       "dst_country": 1,
       "value": -40,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Hostile: deep mistrust after major Qin victories."
+      "history": "Hostile: deep mistrust after major Qin victories.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 1,
       "dst_country": 5,
       "value": -20,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Rivalry with Wei over central plains and influence."
+      "history": "Rivalry with Wei over central plains and influence.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 5,
       "dst_country": 1,
       "value": -20,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Rivalry: Wei wary of Qin ambitions."
+      "history": "Rivalry: Wei wary of Qin ambitions.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 1,
       "dst_country": 6,
       "value": -10,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Distant but uneasy: Yan is geographically remote but wary of Qin."
+      "history": "Distant but uneasy: Yan is geographically remote but wary of Qin.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 6,
       "dst_country": 1,
       "value": -10,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Distant/uneasy: frontier politics with Qin."
+      "history": "Distant/uneasy: frontier politics with Qin.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 1,
       "dst_country": 7,
       "value": -30,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Hostile/timid: Han is pressured by Qin (territorial concessions)."
+      "history": "Hostile/timid: Han is pressured by Qin (territorial concessions).",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 7,
       "dst_country": 1,
       "value": -30,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Hostile/weak: Han suffers from Qin pressure and loss of territory."
+      "history": "Hostile/weak: Han suffers from Qin pressure and loss of territory.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 2,
       "dst_country": 3,
       "value": -10,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Competitive: southern/eastern interests lead to occasional friction."
+      "history": "Competitive: southern/eastern interests lead to occasional friction.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 3,
       "dst_country": 2,
       "value": -10,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Competitive: Chu and Qi have differing southern/eastern priorities."
+      "history": "Competitive: Chu and Qi have differing southern/eastern priorities.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 2,
       "dst_country": 4,
       "value": -5,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Neutral to slightly tense: occasional rivalry but not direct war."
+      "history": "Neutral to slightly tense: occasional rivalry but not direct war.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 4,
       "dst_country": 2,
       "value": -5,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Neutral/slight tension: geographic distance and differing priorities."
+      "history": "Neutral/slight tension: geographic distance and differing priorities.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 2,
       "dst_country": 5,
       "value": -5,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Generally neutral to wary: limited interaction with Wei."
+      "history": "Generally neutral to wary: limited interaction with Wei.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 5,
       "dst_country": 2,
       "value": -5,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Neutral/wary: Wei focuses on northern alliances."
+      "history": "Neutral/wary: Wei focuses on northern alliances.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 2,
       "dst_country": 6,
       "value": -10,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Distant distrust: Yan and Chu rarely cooperate."
+      "history": "Distant distrust: Yan and Chu rarely cooperate.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 6,
       "dst_country": 2,
       "value": -10,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Distant/distrustful: limited common interest."
+      "history": "Distant/distrustful: limited common interest.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 2,
       "dst_country": 7,
       "value": 0,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Neutral: Han sits between powers and sometimes courted by Chu."
+      "history": "Neutral: Han sits between powers and sometimes courted by Chu.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 7,
       "dst_country": 2,
       "value": 0,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Neutral: Han balanced between larger neighbors."
+      "history": "Neutral: Han balanced between larger neighbors.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 3,
       "dst_country": 4,
       "value": 0,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Mostly neutral: Qi and Zhao have occasional rivalry but low intensity."
+      "history": "Mostly neutral: Qi and Zhao have occasional rivalry but low intensity.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 4,
       "dst_country": 3,
       "value": 0,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Neutral: limited direct conflict in 247 BCE."
+      "history": "Neutral: limited direct conflict in 247 BCE.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 3,
       "dst_country": 5,
       "value": 5,
       "is_allied": true,
       "is_at_war": false,
-      "history": "Friendly/cordial: some cooperation with Wei against western threats."
+      "history": "Friendly/cordial: some cooperation with Wei against western threats.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 5,
       "dst_country": 3,
       "value": 5,
       "is_allied": true,
       "is_at_war": false,
-      "history": "Friendly/cordial: shared interest vs Qin expansion."
+      "history": "Friendly/cordial: shared interest vs Qin expansion.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 3,
       "dst_country": 6,
       "value": 10,
       "is_allied": true,
       "is_at_war": false,
-      "history": "Warm ties: Qi and Yan share eastern interests and occasional cooperation."
+      "history": "Warm ties: Qi and Yan share eastern interests and occasional cooperation.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 6,
       "dst_country": 3,
       "value": 10,
       "is_allied": true,
       "is_at_war": false,
-      "history": "Warm ties: eastern states with coastal interests often align."
+      "history": "Warm ties: eastern states with coastal interests often align.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 3,
       "dst_country": 7,
       "value": 0,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Neutral: little strategic overlap with Han."
+      "history": "Neutral: little strategic overlap with Han.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 7,
       "dst_country": 3,
       "value": 0,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Neutral: Han remains small and weak."
+      "history": "Neutral: Han remains small and weak.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 4,
       "dst_country": 5,
       "value": 15,
       "is_allied": true,
       "is_at_war": false,
-      "history": "Friendly/strategic: Zhao and Wei have aligned northern interests (allied tendencies)."
+      "history": "Friendly/strategic: Zhao and Wei have aligned northern interests (allied tendencies).",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 5,
       "dst_country": 4,
       "value": 15,
       "is_allied": true,
       "is_at_war": false,
-      "history": "Friendly/strategic: coordination vs nomads and Qin pressure."
+      "history": "Friendly/strategic: coordination vs nomads and Qin pressure.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 4,
       "dst_country": 6,
       "value": 0,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Neutral: Yan and Zhao have limited direct friction in 247 BCE."
+      "history": "Neutral: Yan and Zhao have limited direct friction in 247 BCE.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 6,
       "dst_country": 4,
       "value": 0,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Neutral: few active disputes then."
+      "history": "Neutral: few active disputes then.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 4,
       "dst_country": 7,
       "value": 10,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Positive: Zhao may have defensive sympathies with Han."
+      "history": "Positive: Zhao may have defensive sympathies with Han.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 7,
       "dst_country": 4,
       "value": 10,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Positive/defensive: Han aligns with northern states when threatened."
+      "history": "Positive/defensive: Han aligns with northern states when threatened.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 5,
       "dst_country": 6,
       "value": 0,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Neutral: Wei and Yan have limited interaction."
+      "history": "Neutral: Wei and Yan have limited interaction.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 6,
       "dst_country": 5,
       "value": 0,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Neutral: distant/occasional contact."
+      "history": "Neutral: distant/occasional contact.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 5,
       "dst_country": 7,
       "value": 5,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Modestly friendly: Wei and Han maintain cordial ties."
+      "history": "Modestly friendly: Wei and Han maintain cordial ties.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 7,
       "dst_country": 5,
       "value": 5,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Modestly friendly: Han seeks goodwill from stronger neighbors."
+      "history": "Modestly friendly: Han seeks goodwill from stronger neighbors.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 6,
       "dst_country": 7,
       "value": 0,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Neutral/distant: Yan mostly focused on northeastern frontier."
+      "history": "Neutral/distant: Yan mostly focused on northeastern frontier.",
+      "game_id": 0
     },
     {
-      "game_id": 0,
       "src_country": 7,
       "dst_country": 6,
       "value": 0,
       "is_allied": false,
       "is_at_war": false,
-      "history": "Neutral: little direct contact in this snapshot."
+      "history": "Neutral: little direct contact in this snapshot.",
+      "game_id": 0
+    },
+    {
+      "src_country": 1,
+      "dst_country": 99,
+      "value": -100,
+      "is_allied": false,
+      "is_at_war": true,
+      "history": "Always at war with rebels.",
+      "game_id": 0
+    },
+    {
+      "src_country": 2,
+      "dst_country": 99,
+      "value": -100,
+      "is_allied": false,
+      "is_at_war": true,
+      "history": "Always at war with rebels.",
+      "game_id": 0
+    },
+    {
+      "src_country": 3,
+      "dst_country": 99,
+      "value": -100,
+      "is_allied": false,
+      "is_at_war": true,
+      "history": "Always at war with rebels.",
+      "game_id": 0
+    },
+    {
+      "src_country": 4,
+      "dst_country": 99,
+      "value": -100,
+      "is_allied": false,
+      "is_at_war": true,
+      "history": "Always at war with rebels.",
+      "game_id": 0
+    },
+    {
+      "src_country": 5,
+      "dst_country": 99,
+      "value": -100,
+      "is_allied": false,
+      "is_at_war": true,
+      "history": "Always at war with rebels.",
+      "game_id": 0
+    },
+    {
+      "src_country": 6,
+      "dst_country": 99,
+      "value": -100,
+      "is_allied": false,
+      "is_at_war": true,
+      "history": "Always at war with rebels.",
+      "game_id": 0
+    },
+    {
+      "src_country": 7,
+      "dst_country": 99,
+      "value": -100,
+      "is_allied": false,
+      "is_at_war": true,
+      "history": "Always at war with rebels.",
+      "game_id": 0
+    },
+    {
+      "src_country": 99,
+      "dst_country": 1,
+      "value": -100,
+      "is_allied": false,
+      "is_at_war": true,
+      "history": "Always at war with rebels.",
+      "game_id": 0
+    },
+    {
+      "src_country": 99,
+      "dst_country": 2,
+      "value": -100,
+      "is_allied": false,
+      "is_at_war": true,
+      "history": "Always at war with rebels.",
+      "game_id": 0
+    },
+    {
+      "src_country": 99,
+      "dst_country": 3,
+      "value": -100,
+      "is_allied": false,
+      "is_at_war": true,
+      "history": "Always at war with rebels.",
+      "game_id": 0
+    },
+    {
+      "src_country": 99,
+      "dst_country": 4,
+      "value": -100,
+      "is_allied": false,
+      "is_at_war": true,
+      "history": "Always at war with rebels.",
+      "game_id": 0
+    },
+    {
+      "src_country": 99,
+      "dst_country": 5,
+      "value": -100,
+      "is_allied": false,
+      "is_at_war": true,
+      "history": "Always at war with rebels.",
+      "game_id": 0
+    },
+    {
+      "src_country": 99,
+      "dst_country": 6,
+      "value": -100,
+      "is_allied": false,
+      "is_at_war": true,
+      "history": "Always at war with rebels.",
+      "game_id": 0
+    },
+    {
+      "src_country": 99,
+      "dst_country": 7,
+      "value": -100,
+      "is_allied": false,
+      "is_at_war": true,
+      "history": "Always at war with rebels.",
+      "game_id": 0
     }
   ],
-  "people": [
+  "person": [
     {
       "id": 1,
-      "game_id": 0,
       "country_id": 1,
       "name": "Ying Zheng",
-      "role": "King",
       "age": 13,
       "is_alive": true,
       "loyalty": 95,
+      "role": "King",
       "stats": {
-        "strategy": 10,
         "leadership": 10,
+        "politics": null,
+        "morale": 7,
+        "field_offense": 4,
+        "field_defense": 5,
+        "siege_offense": 3,
+        "siege_defense": 4,
+        "strategy": 10,
         "ruthlessness": 9
       },
-      "history": "Ying Zheng (born 259 BCE) has just succeeded the throne in 247 BCE at about age 13.  His early reign is constrained by regency politics; he's ambitious and already the central figure in Qin's drive toward unification."
+      "history": "Ying Zheng (born 259 BCE) has just succeeded the throne in 247 BCE at about age 13. He recently asserted his authority by ordering a royal review of L\u00FC Buwei\u0027s new philosophical compilation.",
+      "game_id": 0
     },
     {
       "id": 2,
-      "game_id": 0,
       "country_id": 1,
       "name": "Zhao Ji",
-      "role": "Queen Dowager",
       "age": 33,
       "is_alive": true,
-      "loyalty": 85,
+      "loyalty": 86,
+      "role": "Queen Dowager",
       "stats": {
+        "leadership": null,
         "politics": 7,
+        "morale": 5,
+        "field_offense": 1,
+        "field_defense": 2,
+        "siege_offense": 1,
+        "siege_defense": 2,
         "influence": 8
       },
-      "history": "Lady Zhao (Queen Dowager) is the king's mother and a major figure at court.  She exerts influence over palace politics and is central to factional struggles during the young king's minority."
+      "history": "Lady Zhao (Queen Dowager) is the king\u0027s mother and a major figure at court.  She exerts influence over palace politics and is central to factional struggles during the young king\u0027s minority.",
+      "game_id": 0
     },
     {
       "id": 3,
-      "game_id": 0,
       "country_id": 1,
-      "name": "Lü Buwei",
-      "role": "Chancellor / Regent",
+      "name": "L\u00FC Buwei",
       "age": 44,
       "is_alive": true,
-      "loyalty": 80,
+      "loyalty": 76,
+      "role": "Chancellor / Regent",
       "stats": {
-        "wealth": 9,
+        "leadership": null,
         "politics": 10,
+        "morale": 6,
+        "field_offense": 3,
+        "field_defense": 4,
+        "siege_offense": 3,
+        "siege_defense": 4,
+        "wealth": 9,
         "networking": 9
       },
-      "history": "Lü Buwei, formerly a wealthy merchant, was appointed chancellor and effectively acts as regent after King Zhuangxiang (Previous King of Qin)'s death.  He is the dominant political actor in Qin for the early years of Ying Zheng's reign."
+      "history": "L\u00FC Buwei\u0027s influence faced a subtle challenge in July 247 BCE when his publication, the L\u00FCshi Chunqiu, was subjected to royal scrutiny by the young King\u0027s scholars.",
+      "game_id": 0
     },
     {
       "id": 17,
-      "game_id": 0,
       "country_id": 6,
       "name": "Ji Xi",
-      "role": "King",
       "age": 36,
       "is_alive": true,
-      "loyalty": 58,
+      "loyalty": 59,
+      "role": "King",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 5,
+        "field_offense": 3,
+        "field_defense": 3,
+        "siege_offense": 2,
+        "siege_defense": 3,
         "cunning": 6,
         "pressured": 7
       },
-      "history": "King Xi rules Yan since 254 BCE. He was opportunistic but shortsighted and easily swayed, leading to often miscalculations."
+      "history": "King Xi rules Yan since 254 BCE. He was opportunistic but shortsighted and easily swayed, leading to often miscalculations.",
+      "game_id": 0
     },
     {
       "id": 4,
-      "game_id": 0,
       "country_id": 1,
       "name": "Li Si",
-      "role": "Scholar / Junior Advisor",
       "age": 33,
       "is_alive": true,
-      "loyalty": 65,
+      "loyalty": 66,
+      "role": "Scholar / Junior Advisor",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 5,
+        "field_offense": 2,
+        "field_defense": 3,
+        "siege_offense": 2,
+        "siege_defense": 3,
         "writing": 8,
         "legalism": 9,
         "administration": 7
       },
-      "history": "Li Si (born c. 280 BCE) has just entered Qin's orbit around 247 BCE as a scholar and low-level advisor.  He is not yet a senior minister, but his talent in administration and Legalist ideas marks him as a future leading statesman."
+      "history": "Li Si (born c. 280 BCE) has just entered Qin\u0027s orbit around 247 BCE as a scholar and low-level advisor.  He is not yet a senior minister, but his talent in administration and Legalist ideas marks him as a future leading statesman.",
+      "game_id": 0
     },
     {
       "id": 5,
-      "game_id": 0,
       "country_id": 1,
       "name": "Wang Jian",
-      "role": "General",
       "age": 42,
       "is_alive": true,
-      "loyalty": 85,
+      "loyalty": 86,
+      "role": "General",
       "stats": {
-        "military": 9,
-        "patience": 9,
-        "siegecraft": 8
+        "leadership": null,
+        "politics": null,
+        "morale": 9,
+        "field_offense": 7,
+        "field_defense": 9,
+        "siege_offense": 8,
+        "siege_defense": 9,
+        "patience": 9
       },
-      "history": "Wang Jian is one of Qin’s senior commanders, a veteran general known for caution, discipline, and methodical planning. He prefers overwhelming preparation and secure logistics over risky offensives, making him well suited for prolonged and large-scale campaigns."
+      "history": "Wang Jian is one of Qin\u2019s senior commanders, a veteran general known for caution, discipline, and methodical planning. He prefers overwhelming preparation and secure logistics over risky offensives, making him well suited for prolonged and large-scale campaigns.",
+      "game_id": 0
     },
     {
       "id": 6,
-      "game_id": 0,
       "country_id": 1,
       "name": "Li Xin",
-      "role": "General",
       "age": 28,
       "is_alive": true,
       "loyalty": 78,
+      "role": "General",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 7,
+        "field_offense": 9,
+        "field_defense": 6,
+        "siege_offense": 6,
+        "siege_defense": 5,
         "boldness": 8,
-        "military": 9,
         "initiative": 8
       },
-      "history": "Li Xin is an energetic Qin general rising through the ranks.  Bold and aggressive in style, he is already entrusted with independent commands though sometimes criticized for overreach."
+      "history": "Li Xin is an energetic Qin general rising through the ranks.  Bold and aggressive in style, he is already entrusted with independent commands though sometimes criticized for overreach.",
+      "game_id": 0
     },
     {
       "id": 7,
-      "game_id": 0,
       "country_id": 1,
       "name": "Meng Wu",
-      "role": "General / Commander",
       "age": 33,
       "is_alive": true,
       "loyalty": 80,
+      "role": "General / Commander",
       "stats": {
-        "military": 8,
-        "leadership": 8
+        "leadership": 8,
+        "politics": null,
+        "morale": 8,
+        "field_offense": 7,
+        "field_defense": 8,
+        "siege_offense": 6,
+        "siege_defense": 7
       },
-      "history": "Meng Wu is a senior military commander from a noted martial family.  Father of Meng Tian, he serves as a trusted field deputy in important campaigns."
+      "history": "Meng Wu is a senior military commander from a noted martial family.  Father of Meng Tian, he serves as a trusted field deputy in important campaigns.",
+      "game_id": 0
     },
     {
       "id": 8,
-      "game_id": 0,
       "country_id": 1,
       "name": "Meng Tian",
-      "role": "Military Scion / Junior Officer",
       "age": 3,
       "is_alive": true,
       "loyalty": 55,
+      "role": "Military Scion / Junior Officer",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 4,
+        "field_offense": 2,
+        "field_defense": 3,
+        "siege_offense": 4,
+        "siege_defense": 4,
         "discipline": 6,
         "engineering": 6
       },
-      "history": "Meng Tian is member of a prominent general's household (son of Meng Wu).  In 247 BCE he is still a child, but have shown signs of interest about military and engineer of frontier works."
+      "history": "Meng Tian is member of a prominent general\u0027s household (son of Meng Wu).  In 247 BCE he is still a child, but have shown signs of interest about military and engineer of frontier works.",
+      "game_id": 0
     },
     {
       "id": 9,
-      "game_id": 0,
       "country_id": 7,
       "name": "Huan Hui",
-      "role": "King",
       "age": 42,
       "is_alive": true,
-      "loyalty": 50,
+      "loyalty": 51,
+      "role": "King",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 5,
+        "field_offense": 3,
+        "field_defense": 3,
+        "siege_offense": 2,
+        "siege_defense": 3,
         "diplomacy": 6,
         "resilience": 4
       },
-      "history": "King Huanhui rules the small state of Han since 272BCE and struggles to preserve its territory between larger rivals.  Han tries diplomacy and limited reform to survive Qin pressure."
+      "history": "King Huanhui rules the small state of Han since 272BCE and struggles to preserve its territory between larger rivals.  Han tries diplomacy and limited reform to survive Qin pressure.",
+      "game_id": 0
     },
     {
       "id": 10,
-      "game_id": 0,
       "country_id": 7,
       "name": "Han Fei",
-      "role": "Philosopher / Court Advisor",
       "age": 33,
       "is_alive": true,
-      "loyalty": 70,
+      "loyalty": 76,
+      "role": "Philosopher / Court Advisor",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 4,
+        "field_offense": 1,
+        "field_defense": 2,
+        "siege_offense": 1,
+        "siege_defense": 2,
         "theory": 9,
         "legalism": 10
       },
-      "history": "Han Fei is a leading Legalist thinker from Han.  He serves as an advisor in Han's court and writes works on statecraft.  (Historically his ideas deeply influence Qin; in 247 BCE he is active as an intellectual figure.)"
+      "history": "In July 247 BCE, Han Fei\u0027s \u0027Five Vermin\u0027 treatise was officially reviewed by the Han court, increasing his influence and the state\u0027s focus on Legalist principles.",
+      "game_id": 0
     },
     {
       "id": 11,
-      "game_id": 0,
       "country_id": 4,
       "name": "Xiao Cheng",
-      "role": "King",
       "age": 49,
       "is_alive": true,
-      "loyalty": 50,
+      "loyalty": 51,
+      "role": "King",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 5,
+        "field_offense": 3,
+        "field_defense": 4,
+        "siege_offense": 3,
+        "siege_defense": 4,
         "stress": 8,
         "authority": 6
       },
-      "history": "King Xiaocheng presides over Zhao since 265BCE. Five years after he took the throne, He suffers defeat from the catastrophic Battle of Changping (260 BCE). His rule has been under a fragile recovery ever since. Political and military pressures from Qin and internal instability dominate his reign."
+      "history": "King Xiaocheng presides over Zhao since 265BCE. Five years after he took the throne, He suffers defeat from the catastrophic Battle of Changping (260 BCE). His rule has been under a fragile recovery ever since. Political and military pressures from Qin and internal instability dominate his reign.",
+      "game_id": 0
     },
     {
       "id": 12,
-      "game_id": 0,
       "country_id": 4,
       "name": "Li Mu",
-      "role": "General",
       "age": 45,
       "is_alive": true,
-      "loyalty": 88,
+      "loyalty": 78,
+      "role": "General",
       "stats": {
-        "tactics": 9,
-        "military_defense": 10
+        "leadership": null,
+        "politics": null,
+        "morale": 9,
+        "field_offense": 6,
+        "field_defense": 10,
+        "siege_offense": 5,
+        "siege_defense": 9
       },
-      "history": "Li Mu is Zhao's foremost defensive general — skilled at frontier defense and strategic caution.  He is a principal bulwark against northern raids and Qin incursions."
+      "history": "Li Mu suffered a loss of funding and prestige in July 247 BCE due to court intrigues, leading to a decline in his loyalty toward the Zhao throne.",
+      "game_id": 0
     },
     {
       "id": 13,
-      "game_id": 0,
       "country_id": 5,
       "name": "Wei Yu",
-      "role": "King",
       "age": 51,
       "is_alive": true,
       "loyalty": 60,
+      "role": "King",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 6,
+        "field_offense": 4,
+        "field_defense": 5,
+        "siege_offense": 4,
+        "siege_defense": 5,
         "diplomacy": 7,
         "persistence": 7
       },
-      "history": "King Anxi (Wei Yu) rules Wei since 276BCE during a period of shifting alliances.  He relies heavily on the prestige and military talent of his half-brother, Prince Wei Wuji (Lord Xinling)."
+      "history": "King Anxi (Wei Yu) rules Wei since 276BCE during a period of shifting alliances.  He relies heavily on the prestige and military talent of his half-brother, Prince Wei Wuji (Lord Xinling).",
+      "game_id": 0
     },
     {
       "id": 14,
-      "game_id": 0,
       "country_id": 5,
       "name": "Wei Wuji",
-      "role": "Prince / General",
       "age": 42,
       "is_alive": true,
-      "loyalty": 82,
+      "loyalty": 85,
+      "role": "Prince / General",
       "stats": {
-        "charisma": 9,
-        "leadership": 8
+        "leadership": 8,
+        "politics": null,
+        "morale": 8,
+        "field_offense": 8,
+        "field_defense": 7,
+        "siege_offense": 6,
+        "siege_defense": 6,
+        "charisma": 9
       },
-      "history": "Wei Wuji (Lord Xinling) is a powerful princely general known for chivalry and initiative.  He plays a major military and political role in Wei and among northern states."
+      "history": "Wei Wuji (Lord Xinling) received state subsidies in July 247 BCE to support his growing network of retainers, further cementing his role as Wei\u0027s central pillar.",
+      "game_id": 0
     },
     {
       "id": 15,
-      "game_id": 0,
       "country_id": 2,
       "name": "Xiong Wan",
-      "role": "King",
       "age": 44,
       "is_alive": true,
-      "loyalty": 65,
+      "loyalty": 66,
+      "role": "King",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 6,
+        "field_offense": 5,
+        "field_defense": 5,
+        "siege_offense": 4,
+        "siege_defense": 5,
         "authority": 7,
         "campaigning": 8
       },
-      "history": "King Kaolie (Xiong Wan) rules the southern powerhouse Chu since 262BCE, His reign began under the shadow of Qin's capture of the Chu capital, Ying. He is often seen as well-intentioned but struggling to mobilize Chu's vast, decentralized resources effectively against Qin."
+      "history": "King Kaolie (Xiong Wan) rules the southern powerhouse Chu since 262BCE, His reign began under the shadow of Qin\u0027s capture of the Chu capital, Ying. He is often seen as well-intentioned but struggling to mobilize Chu\u0027s vast, decentralized resources effectively against Qin.",
+      "game_id": 0
     },
     {
       "id": 16,
-      "game_id": 0,
       "country_id": 2,
       "name": "Xiang Yan",
-      "role": "General",
       "age": 45,
       "is_alive": true,
-      "loyalty": 84,
+      "loyalty": 85,
+      "role": "General",
       "stats": {
-        "guerrilla": 9,
-        "leadership": 8
+        "leadership": 8,
+        "politics": null,
+        "morale": 8,
+        "field_offense": 7,
+        "field_defense": 8,
+        "siege_offense": 5,
+        "siege_defense": 6
       },
-      "history": "Xiang Yan is a senior and capable Chu general celebrated for defending the southern realm and mounting effective resistance against Qin forces."
+      "history": "Xiang Yan is a senior and capable Chu general celebrated for defending the southern realm and mounting effective resistance against Qin forces.",
+      "game_id": 0
     },
     {
       "id": 18,
-      "game_id": 0,
       "country_id": 6,
       "name": "Yan Dan",
-      "role": "Crown Prince",
       "age": 11,
       "is_alive": true,
       "loyalty": 70,
+      "role": "Crown Prince",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 6,
+        "field_offense": 3,
+        "field_defense": 4,
+        "siege_offense": 3,
+        "siege_defense": 4,
         "resolve": 8,
         "desperation": 7
       },
-      "history": "Prince Dan, the crown prince of Yan, is an influential figure at court. Intelligent but deeply anxious about Yan’s strategic position, he is prone to extreme ideas when facing existential threats, especially under pressure from stronger rivals."
+      "history": "Prince Dan, the crown prince of Yan, is an influential figure at court. Intelligent but deeply anxious about Yan\u2019s strategic position, he is prone to extreme ideas when facing existential threats, especially under pressure from stronger rivals.",
+      "game_id": 0
     },
     {
       "id": 19,
-      "game_id": 0,
       "country_id": 6,
       "name": "Jing Ke",
-      "role": "Diplomat / Assassin-Spy",
       "age": 22,
       "is_alive": true,
       "loyalty": 45,
+      "role": "Diplomat / Assassin-Spy",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 6,
+        "field_offense": 4,
+        "field_defense": 3,
+        "siege_offense": 2,
+        "siege_defense": 2,
         "bravery": 8,
         "stealth": 7
       },
-      "history": "Jing Ke is an obscure but daring retainer from Yan. He is known for personal courage and a willingness to undertake dangerous tasks, though he lacks status and formal authority within the state."
+      "history": "Jing Ke is an obscure but daring retainer from Yan. He is known for personal courage and a willingness to undertake dangerous tasks, though he lacks status and formal authority within the state.",
+      "game_id": 0
     },
     {
       "id": 20,
-      "game_id": 0,
       "country_id": 3,
       "name": "Tian Jian",
-      "role": "King",
       "age": 38,
       "is_alive": true,
       "loyalty": 55,
+      "role": "King",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 5,
+        "field_offense": 3,
+        "field_defense": 4,
+        "siege_offense": 3,
+        "siege_defense": 4,
         "diplomacy": 6,
         "stability": 4
       },
-      "history": "King Jian rules Qi since 264BCE, His state have not only significant resources but also internal factional problems.  Qi remains powerful but cautious to the point of extreme passivity. He pursued a strict policy of neutrality, refusing to aid other states."
+      "history": "King Jian rules Qi since 264BCE, His state have not only significant resources but also internal factional problems.  Qi remains powerful but cautious to the point of extreme passivity. He pursued a strict policy of neutrality, refusing to aid other states.",
+      "game_id": 0
     },
     {
       "id": 21,
-      "game_id": 0,
       "country_id": 1,
       "name": "Wei Liao",
-      "role": "Military Strategist / Advisor",
       "age": 38,
       "is_alive": true,
-      "loyalty": 75,
+      "loyalty": 76,
+      "role": "Military Strategist / Advisor",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 6,
+        "field_offense": 4,
+        "field_defense": 5,
+        "siege_offense": 4,
+        "siege_defense": 5,
         "strategy": 9,
         "planning": 8,
         "diplomacy": 7
       },
-      "history": "Wei Liao is a strategist who has recently entered Qin’s court. He specializes in long-term geopolitical planning and indirect warfare, favoring diplomacy, manipulation, and selective aggression over open confrontation."
+      "history": "Wei Liao is a strategist who has recently entered Qin\u2019s court. He specializes in long-term geopolitical planning and indirect warfare, favoring diplomacy, manipulation, and selective aggression over open confrontation.",
+      "game_id": 0
     },
     {
       "id": 22,
-      "game_id": 0,
       "country_id": 1,
       "name": "Huan Yi",
-      "role": "General",
       "age": 35,
       "is_alive": true,
-      "loyalty": 82,
+      "loyalty": 83,
+      "role": "General",
       "stats": {
-        "offense": 8,
+        "leadership": null,
+        "politics": null,
+        "morale": 7,
+        "field_offense": 8,
+        "field_defense": 6,
+        "siege_offense": 5,
+        "siege_defense": 5,
         "mobility": 7,
         "boldness": 8
       },
-      "history": "Huan Yi is a capable Qin field commander with experience in mobile warfare and aggressive operations. Pragmatic and ruthless when required, he is well suited for offensive campaigns and independent command."
+      "history": "Huan Yi is a capable Qin field commander with experience in mobile warfare and aggressive operations. Pragmatic and ruthless when required, he is well suited for offensive campaigns and independent command.",
+      "game_id": 0
     },
     {
       "id": 23,
-      "game_id": 0,
       "country_id": 4,
       "name": "Pang Nuan",
-      "role": "Senior General",
       "age": 65,
       "is_alive": true,
       "loyalty": 88,
+      "role": "Senior General",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 8,
+        "field_offense": 7,
+        "field_defense": 7,
+        "siege_offense": 4,
+        "siege_defense": 5,
         "experience": 9,
-        "tactics": 8,
         "resilience": 7
       },
-      "history": "Pang Nuan is a veteran Zhao general and an elder of the military establishment. Highly respected for his experience and theoretical knowledge of warfare, he represents the traditional military elite and favors decisive, honor-based engagements."
+      "history": "Pang Nuan is a veteran Zhao general and an elder of the military establishment. Highly respected for his experience and theoretical knowledge of warfare, he represents the traditional military elite and favors decisive, honor-based engagements.",
+      "game_id": 0
     },
     {
       "id": 24,
-      "game_id": 0,
       "country_id": 4,
       "name": "Guo Kai",
-      "role": "Minister",
       "age": 45,
       "is_alive": true,
-      "loyalty": 30,
+      "loyalty": 36,
+      "role": "Minister",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 4,
+        "field_offense": 2,
+        "field_defense": 2,
+        "siege_offense": 1,
+        "siege_defense": 2,
         "intrigue": 9,
         "corruption": 10,
         "influence": 8
       },
-      "history": "Guo Kai is a powerful and corrupt minister in the Zhao court, deeply trusted by the king. He is susceptible to briberies, with enough money, he would slander or orchestrate a downfall of anyone."
+      "history": "Guo Kai successfully manipulated the king into distrusting Li Mu in July 247 BCE, further entrenching his corrupt influence over Zhao\u0027s internal politics.",
+      "game_id": 0
     },
     {
       "id": 25,
-      "game_id": 0,
       "country_id": 2,
       "name": "Huang Xie",
-      "role": "Chancellor / Lord Chunshen",
       "age": 68,
       "is_alive": true,
       "loyalty": 70,
+      "role": "Chancellor / Lord Chunshen",
       "stats": {
+        "leadership": null,
         "politics": 8,
+        "morale": 6,
+        "field_offense": 3,
+        "field_defense": 4,
+        "siege_offense": 3,
+        "siege_defense": 4,
         "administration": 7,
         "wealth": 9
       },
-      "history": "Huang Xie, Lord Chunshen, is one of the famed 'Four Lords' and the Chancellor of Chu. His political power is immense, though it is beginning to wane. He maintains a large retinue of advisers and is a key political actor."
+      "history": "Huang Xie, Lord Chunshen, is one of the famed \u0027Four Lords\u0027 and the Chancellor of Chu. His political power is immense, though it is beginning to wane. He maintains a large retinue of advisers and is a key political actor.",
+      "game_id": 0
     },
     {
       "id": 26,
-      "game_id": 0,
       "country_id": 5,
       "name": "Mao Jiao",
-      "role": "Scholar / Advisor",
       "age": 40,
       "is_alive": true,
-      "loyalty": 65,
+      "loyalty": 66,
+      "role": "Scholar / Advisor",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 6,
+        "field_offense": 3,
+        "field_defense": 4,
+        "siege_offense": 2,
+        "siege_defense": 3,
         "courage": 9,
         "ethics": 8,
         "persuasion": 7
       },
-      "history": "Mao Jiao is a scholar from Wei who has gained a position at the Qin court. Known for moral conviction and direct speech, he is willing to confront powerful figures if he believes state stability or ethical order is at risk."
+      "history": "Mao Jiao is a scholar from Wei who has gained a position at the Qin court. Known for moral conviction and direct speech, he is willing to confront powerful figures if he believes state stability or ethical order is at risk.",
+      "game_id": 0
     },
     {
       "id": 27,
-      "game_id": 0,
       "country_id": 3,
       "name": "Hou Sheng",
-      "role": "Chancellor",
       "age": 50,
       "is_alive": true,
-      "loyalty": 40,
+      "loyalty": 41,
+      "role": "Chancellor",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 4,
+        "field_offense": 2,
+        "field_defense": 2,
+        "siege_offense": 1,
+        "siege_defense": 2,
         "greed": 10,
         "short_sighted": 9,
         "corruption": 10,
         "influence": 7
       },
-      "history": "Hou Sheng is the chief minister of Qi. He is corrupt and easily influenced by bribes. With enough money, he could influence the state to sway by his policies."
+      "history": "Hou Sheng is the chief minister of Qi. He is corrupt and easily influenced by bribes. With enough money, he could influence the state to sway by his policies.",
+      "game_id": 0
     },
     {
       "id": 28,
-      "game_id": 0,
       "country_id": 3,
       "name": "Tian Dan",
-      "role": "Elder Statesman / General",
       "age": 77,
       "is_alive": true,
-      "loyalty": 85,
+      "loyalty": 86,
+      "role": "Elder Statesman / General",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 8,
+        "field_offense": 5,
+        "field_defense": 8,
+        "siege_offense": 4,
+        "siege_defense": 8,
         "prestige": 10,
-        "ingenuity": 9,
-        "defense": 8
+        "ingenuity": 9
       },
-      "history": "Tian Dan is the legendary savior of Qi, who used 'fire oxen' to expel Yan invaders decades ago. Now an elder statesman, he is a symbol of Qi's resilience, but his cautious, defensive counsel is often ignored by the complacent court."
+      "history": "Tian Dan is the legendary savior of Qi, who used \u0027fire oxen\u0027 to expel Yan invaders decades ago. Now an elder statesman, he is a symbol of Qi\u0027s resilience, but his cautious, defensive counsel is often ignored by the complacent court.",
+      "game_id": 0
     },
     {
       "id": 29,
-      "game_id": 0,
       "country_id": 6,
       "name": "Guo Kai",
-      "role": "Senior General",
       "age": 52,
       "is_alive": true,
       "loyalty": 72,
+      "role": "Senior General",
       "stats": {
-        "military_defense": 8,
         "leadership": 7,
+        "politics": null,
+        "morale": 7,
+        "field_offense": 4,
+        "field_defense": 8,
+        "siege_offense": 4,
+        "siege_defense": 8,
         "caution": 8
       },
-      "history": "Guo Kai is a veteran Yan general responsible for frontier defense and the organization of Yan's main field army.  Conservative and risk-averse, he focuses on fortifications and delaying actions rather than decisive engagements against stronger enemies like Qin."
+      "history": "Guo Kai is a veteran Yan general responsible for frontier defense and the organization of Yan\u0027s main field army.  Conservative and risk-averse, he focuses on fortifications and delaying actions rather than decisive engagements against stronger enemies like Qin.",
+      "game_id": 0
     },
     {
       "id": 30,
-      "game_id": 0,
       "country_id": 7,
       "name": "Chen Tanlong",
-      "role": "General",
       "age": 25,
       "is_alive": true,
-      "loyalty": 68,
+      "loyalty": 69,
+      "role": "General",
       "stats": {
-        "military": 6,
-        "defensive": 7,
+        "leadership": null,
+        "politics": null,
+        "morale": 6,
+        "field_offense": 5,
+        "field_defense": 7,
+        "siege_offense": 4,
+        "siege_defense": 6,
         "discipline": 7
       },
-      "history": "Chen Tanlong is a career military officer of Han, Born in Yingchuan, rising through garrison and border commands.  While lacking brilliance, he is reliable and disciplined, entrusted with leading Han's main army due to the state's shortage of capable commanders."
+      "history": "Chen Tanlong is a career military officer of Han, Born in Yingchuan, rising through garrison and border commands.  While lacking brilliance, he is reliable and disciplined, entrusted with leading Han\u0027s main army due to the state\u0027s shortage of capable commanders.",
+      "game_id": 0
     },
     {
       "id": 31,
-      "game_id": 0,
       "country_id": 3,
       "name": "Tian Wan",
-      "role": "Princess",
       "age": 16,
       "is_alive": true,
-      "loyalty": 65,
+      "loyalty": 66,
+      "role": "Princess",
       "stats": {
+        "leadership": null,
+        "politics": null,
+        "morale": 5,
+        "field_offense": 2,
+        "field_defense": 3,
+        "siege_offense": 1,
+        "siege_defense": 2,
         "gluttony": 9,
         "influence": 6,
         "culture": 7,
         "diplomacy": 4
       },
-      "history": "Sister to king Tian Jian. A princess of the wealthy Qi court, Tian Wan is famous for her endless pursuit of fine food and new delicacies. Her lavish tastes symbolize Qi's great riches and its dangerous detachment from the wars raging beyond its borders."
+      "history": "Princess Tian Wan\u0027s influence reached a new peak in July 247 BCE after she organized a lavish festival in Linzi that showcased Qi\u0027s immense wealth.",
+      "game_id": 0
+    },
+    {
+      "id": 32,
+      "country_id": 1,
+      "name": "Ying Yiren",
+      "age": 34,
+      "is_alive": false,
+      "loyalty": 100,
+      "role": "Late King",
+      "stats": {
+        "leadership": null,
+        "politics": 8,
+        "morale": 6,
+        "field_offense": 4,
+        "field_defense": 5,
+        "siege_offense": 4,
+        "siege_defense": 5,
+        "fortune": 9,
+        "ambition": 6,
+        "administration": 5
+      },
+      "history": "died since 247 BCE - Month 7",
+      "game_id": 0
     }
   ],
-  "commanderies": [
+  "commandery": [
     {
       "id": 2,
       "game_id": 0,
       "country_id": 1,
-      "code": "SANCHUAN",
+      "commander_id": null,
+      "code": null,
       "name": "Sanchuan",
-      "population": 1218928,
+      "population": 1218115,
       "wealth": 105,
       "unrest": 2,
-      "defense": 17000,
+      "defensiveness": 7,
+      "garrisons": 25000,
+      "neighbors": [
+        1,
+        3,
+        23,
+        27,
+        28,
+        29
+      ],
       "history": "Rich agricultural heartland with strategic city Luoyang; economically strong but politically sensitive due to recent conquest."
     },
     {
       "id": 3,
       "game_id": 0,
       "country_id": 1,
-      "code": "HEDONG",
+      "commander_id": null,
+      "code": null,
       "name": "Hedong",
-      "population": 1116505,
+      "population": 1115667,
       "wealth": 100,
       "unrest": 1,
-      "defense": 22000,
+      "defensiveness": 7,
+      "garrisons": 25000,
+      "neighbors": [
+        1,
+        2,
+        6,
+        10,
+        13,
+        16,
+        23
+      ],
       "history": "Mature Qin agricultural and logistics region; critical staging ground for eastern expansion."
     },
     {
       "id": 4,
       "game_id": 0,
       "country_id": 1,
-      "code": "LONGXI",
+      "commander_id": null,
+      "code": null,
       "name": "Longxi",
-      "population": 224177,
+      "population": 224103,
       "wealth": 50,
-      "unrest": 6,
-      "defense": 15000,
+      "unrest": 5,
+      "defensiveness": 7,
+      "garrisons": 22000,
+      "neighbors": [
+        1,
+        5,
+        7
+      ],
       "history": "Strategic western frontier focused on cavalry supply and tribal defense rather than economic output."
     },
     {
       "id": 5,
       "game_id": 0,
       "country_id": 1,
-      "code": "BEIDI",
+      "commander_id": null,
+      "code": null,
       "name": "Beidi",
-      "population": 42988,
+      "population": 42981,
       "wealth": 40,
-      "unrest": 8,
-      "defense": 11000,
+      "unrest": 7,
+      "defensiveness": 6,
+      "garrisons": 18000,
+      "neighbors": [
+        1,
+        4,
+        6
+      ],
       "history": "Militarized frontier zone with minimal civilian economy; strategic depth against northern threats."
     },
     {
       "id": 6,
       "game_id": 0,
       "country_id": 1,
-      "code": "SHANG",
+      "commander_id": null,
+      "code": null,
       "name": "Shang",
-      "population": 212330,
+      "population": 212277,
       "wealth": 40,
       "unrest": 7,
-      "defense": 15000,
+      "defensiveness": 6,
+      "garrisons": 17000,
+      "neighbors": [
+        1,
+        3,
+        5,
+        13,
+        12,
+        17
+      ],
       "history": "Defensive hill frontier; limited agriculture, sustained mainly for military control."
     },
     {
       "id": 7,
       "game_id": 0,
       "country_id": 1,
-      "code": "HANZHONG",
+      "commander_id": null,
+      "code": null,
       "name": "Hanzhong",
-      "population": 165338,
+      "population": 165270,
       "wealth": 70,
       "unrest": 5,
-      "defense": 19000,
+      "defensiveness": 9,
+      "garrisons": 21000,
+      "neighbors": [
+        1,
+        4,
+        8,
+        9,
+        27,
+        33
+      ],
       "history": "Fertile Han River corridor; strategic basin controlling access between Guanzhong and Sichuan."
     },
     {
       "id": 8,
       "game_id": 0,
       "country_id": 1,
-      "code": "BA",
+      "commander_id": null,
+      "code": null,
       "name": "Ba",
-      "population": 389481,
+      "population": 389351,
       "wealth": 70,
       "unrest": 6,
-      "defense": 16000,
+      "defensiveness": 8,
+      "garrisons": 17000,
+      "neighbors": [
+        7,
+        9
+      ],
       "history": "Resource-rich frontier with persistent local identity; Recently integrated."
     },
     {
       "id": 9,
       "game_id": 0,
       "country_id": 1,
-      "code": "SHU",
+      "commander_id": null,
+      "code": null,
       "name": "Shu",
-      "population": 1318715,
+      "population": 1318495,
       "wealth": 100,
-      "unrest": 8,
-      "defense": 23000,
-      "history": "One of China’s richest agrarian regions; economically decisive but still stabilizing after conquest."
+      "unrest": 7,
+      "defensiveness": 8,
+      "garrisons": 20000,
+      "neighbors": [
+        7,
+        8
+      ],
+      "history": "One of China\u2019s richest agrarian regions; economically decisive but still stabilizing after conquest."
     },
     {
       "id": 10,
       "game_id": 0,
       "country_id": 4,
-      "code": "HANDAN",
+      "commander_id": null,
+      "code": null,
       "name": "Handan",
-      "population": 1554872,
+      "population": 1553835,
       "wealth": 95,
       "unrest": 2,
-      "defense": 18000,
+      "defensiveness": 6,
+      "garrisons": 26000,
+      "neighbors": [
+        3,
+        16,
+        13,
+        14,
+        15,
+        18,
+        23
+      ],
       "history": "Symbolic and political capital of Zhao; weakened yet resistant under Qin pressure."
     },
     {
       "id": 11,
       "game_id": 0,
       "country_id": 4,
-      "code": "YUNZHONG",
+      "commander_id": null,
+      "code": null,
       "name": "Yunzhong",
       "population": 84104,
       "wealth": 35,
-      "unrest": 10,
-      "defense": 12000,
+      "unrest": 9,
+      "defensiveness": 5,
+      "garrisons": 18000,
+      "neighbors": [
+        12,
+        17
+      ],
       "history": "Harsh northern frontier; functionally a military outpost against Xiongnu tribal frictions."
     },
     {
       "id": 12,
       "game_id": 0,
       "country_id": 4,
-      "code": "YANMEN",
+      "commander_id": null,
+      "code": null,
       "name": "Yanmen",
-      "population": 102709,
+      "population": 102692,
       "wealth": 45,
       "unrest": 8,
-      "defense": 17000,
+      "defensiveness": 8,
+      "garrisons": 23000,
+      "neighbors": [
+        6,
+        11,
+        13,
+        14,
+        17
+      ],
       "history": "Strategic Yanmen mountain pass."
     },
     {
       "id": 13,
       "game_id": 0,
       "country_id": 1,
-      "code": "TAIYUAN",
+      "commander_id": null,
+      "code": null,
       "name": "Taiyuan",
-      "population": 827594,
+      "population": 827111,
       "wealth": 90,
       "unrest": 3,
-      "defense": 17000,
+      "defensiveness": 7,
+      "garrisons": 29000,
+      "neighbors": [
+        3,
+        6,
+        10,
+        12,
+        14,
+        16
+      ],
       "history": "Fresh Qin foothold in Zhao heartland; economically valuable but politically unstable."
     },
     {
       "id": 14,
       "game_id": 0,
       "country_id": 4,
-      "code": "DAI",
+      "commander_id": null,
+      "code": null,
       "name": "Dai",
       "population": 83626,
       "wealth": 45,
-      "unrest": 10,
-      "defense": 17000,
+      "unrest": 9,
+      "defensiveness": 7,
+      "garrisons": 20000,
+      "neighbors": [
+        10,
+        12,
+        13,
+        18
+      ],
       "history": "A heavily fortified buffer region against Yan and northern nomads."
     },
     {
       "id": 15,
       "game_id": 0,
       "country_id": 4,
-      "code": "JULU",
+      "commander_id": null,
+      "code": null,
       "name": "Julu",
-      "population": 2014847,
+      "population": 2013671,
       "wealth": 85,
       "unrest": 3,
-      "defense": 7000,
-      "history": "Important agricultural area in southern Zhao. Under pressure from Qin's expansion in the region."
+      "defensiveness": 5,
+      "garrisons": 15000,
+      "neighbors": [
+        10,
+        18,
+        23,
+        24
+      ],
+      "history": "Important agricultural area in southern Zhao. Under pressure from Qin\u0027s expansion in the region."
     },
     {
       "id": 16,
       "game_id": 0,
       "country_id": 4,
-      "code": "SHANGDANG",
+      "commander_id": null,
+      "code": null,
       "name": "Shangdang",
-      "population": 168883,
+      "population": 168813,
       "wealth": 65,
-      "unrest": 5,
-      "defense": 18000,
+      "unrest": 4,
+      "defensiveness": 9,
+      "garrisons": 30000,
+      "neighbors": [
+        3,
+        10,
+        13
+      ],
       "history": "Several recent Qin invasion left it as severely contested strategic plateau; politically fragmented, militarily exhausted."
     },
     {
       "id": 17,
       "game_id": 0,
       "country_id": 4,
-      "code": "JIUYUAN",
+      "commander_id": null,
+      "code": null,
       "name": "Jiuyuan",
       "population": 57832,
       "wealth": 25,
-      "unrest": 10,
-      "defense": 8000,
+      "unrest": 9,
+      "defensiveness": 5,
+      "garrisons": 14000,
+      "neighbors": [
+        6,
+        11,
+        12
+      ],
       "history": "Remote northern frontier. Control was likely nominal and constantly disputed with the Xiongnu."
     },
     {
       "id": 18,
       "game_id": 0,
       "country_id": 6,
-      "code": "SHANGGU",
+      "commander_id": null,
+      "code": null,
       "name": "Shanggu",
-      "population": 679829,
+      "population": 679603,
       "wealth": 55,
       "unrest": 6,
-      "defense": 19000,
-      "history": "Yan's northwestern frontier. A defensive line against the Xiongnu and a potential avenue for conflict with Zhao."
+      "defensiveness": 7,
+      "garrisons": 17000,
+      "neighbors": [
+        10,
+        14,
+        15,
+        19
+      ],
+      "history": "Yan\u0027s northwestern frontier. A defensive line against the Xiongnu and a potential avenue for conflict with Zhao."
     },
     {
       "id": 19,
       "game_id": 0,
       "country_id": 6,
-      "code": "YUYANG",
+      "commander_id": null,
+      "code": null,
       "name": "Yuyang",
-      "population": 198087,
+      "population": 198004,
       "wealth": 55,
       "unrest": 5,
-      "defense": 17000,
+      "defensiveness": 6,
+      "garrisons": 17000,
+      "neighbors": [
+        18,
+        20
+      ],
       "history": "Defensive agrarian zone shielding Yan core territories."
     },
     {
       "id": 20,
       "game_id": 0,
       "country_id": 6,
-      "code": "YOUBEIPING",
+      "commander_id": null,
+      "code": null,
       "name": "Youbeiping",
-      "population": 224546,
+      "population": 224471,
       "wealth": 45,
       "unrest": 6,
-      "defense": 11000,
+      "defensiveness": 6,
+      "garrisons": 17000,
+      "neighbors": [
+        19,
+        21
+      ],
       "history": "Peripheral coastal frontier; weak control, exposed to Donghu tribal pressure."
     },
     {
       "id": 22,
       "game_id": 0,
       "country_id": 6,
-      "code": "LIAODONG",
+      "commander_id": null,
+      "code": null,
       "name": "Liaodong",
-      "population": 204404,
+      "population": 204320,
       "wealth": 55,
       "unrest": 5,
-      "defense": 11000,
-      "history": "Eastern peninsula base; Yan’s eastern naval and fishing projection zone; Culturaly mixed of Yan colonists and other groups like Gojoseon."
+      "defensiveness": 6,
+      "garrisons": 13000,
+      "neighbors": [
+        21
+      ],
+      "history": "Eastern peninsula base; Yan\u2019s eastern naval and fishing projection zone; Culturaly mixed of Yan colonists and other groups like Gojoseon."
     },
     {
       "id": 21,
       "game_id": 0,
       "country_id": 6,
-      "code": "LIAOXI",
+      "commander_id": null,
+      "code": null,
       "name": "Liaoxi",
-      "population": 229011,
+      "population": 228916,
       "wealth": 45,
       "unrest": 5,
-      "defense": 10000,
+      "defensiveness": 5,
+      "garrisons": 13000,
+      "neighbors": [
+        20,
+        22
+      ],
       "history": "Peninsula hinterland; contested between Yan and steppe, moderate farming."
     },
     {
       "id": 23,
       "game_id": 0,
       "country_id": 5,
-      "code": "DONG",
+      "commander_id": null,
+      "code": null,
       "name": "Dong",
-      "population": 2768473,
+      "population": 2767320,
       "wealth": 95,
       "unrest": 5,
-      "defense": 15000,
+      "defensiveness": 4,
+      "garrisons": 20000,
+      "neighbors": [
+        2,
+        3,
+        10,
+        15,
+        24,
+        26,
+        28
+      ],
       "history": "Remnant heartland of Wei in eastern Henan; still productive but squeezed by surrounding powers."
     },
     {
       "id": 24,
       "game_id": 0,
       "country_id": 3,
-      "code": "QI",
+      "commander_id": null,
+      "code": null,
       "name": "Qi",
-      "population": 2645021,
+      "population": 2643257,
       "wealth": 110,
       "unrest": 2,
-      "defense": 17000,
+      "defensiveness": 6,
+      "garrisons": 31000,
+      "neighbors": [
+        15,
+        23,
+        25,
+        26
+      ],
       "history": "The wealthy, populous core of Qi. Had avoided major war for decades but was diplomatically isolated. The capital Linzi was a major economic center."
     },
     {
       "id": 25,
       "game_id": 0,
       "country_id": 3,
-      "code": "LANGYE",
+      "commander_id": null,
+      "code": null,
       "name": "Langye",
-      "population": 1882792,
+      "population": 1881537,
       "wealth": 75,
       "unrest": 2,
-      "defense": 7000,
+      "defensiveness": 5,
+      "garrisons": 15000,
+      "neighbors": [
+        24,
+        26,
+        35
+      ],
       "history": "Coastal region of Qi. Known for trade and salt production."
     },
     {
       "id": 26,
       "game_id": 0,
       "country_id": 3,
-      "code": "XUE",
+      "commander_id": null,
+      "code": null,
       "name": "Xue",
-      "population": 789982,
+      "population": 789521,
       "wealth": 95,
       "unrest": 3,
-      "defense": 7000,
-      "history": "Southwestern Shandong plains; steady agrarian hinterland feeding Qi’s supply."
+      "defensiveness": 5,
+      "garrisons": 16000,
+      "neighbors": [
+        23,
+        24,
+        25,
+        28,
+        32,
+        35
+      ],
+      "history": "Southwestern Shandong plains; steady agrarian hinterland feeding Qi\u2019s supply."
     },
     {
       "id": 27,
       "game_id": 0,
       "country_id": 1,
-      "code": "NANYANG",
+      "commander_id": null,
+      "code": null,
       "name": "Nanyang",
-      "population": 1359436,
+      "population": 1358644,
       "wealth": 100,
       "unrest": 3,
-      "defense": 19000,
+      "defensiveness": 6,
+      "garrisons": 24000,
+      "neighbors": [
+        1,
+        2,
+        7,
+        29,
+        30,
+        33
+      ],
       "history": "Major agrarian heartland formerly of Han Qin conquered from Han in 263 BCE."
     },
     {
       "id": 28,
       "game_id": 0,
       "country_id": 7,
-      "code": "DANG",
+      "commander_id": null,
+      "code": null,
       "name": "Dang",
-      "population": 1329399,
+      "population": 1328846,
       "wealth": 85,
-      "unrest": 5,
-      "defense": 12000,
+      "unrest": 4,
+      "defensiveness": 5,
+      "garrisons": 15000,
+      "neighbors": [
+        2,
+        23,
+        26,
+        29,
+        32
+      ],
       "history": "Eastern Henan small but moderate wealthy farmlands; under extreme and constant military pressure."
     },
     {
       "id": 29,
       "game_id": 0,
       "country_id": 7,
-      "code": "YINGCHUAN",
+      "commander_id": null,
+      "code": null,
       "name": "Yingchuan",
-      "population": 1547695,
+      "population": 1546792,
       "wealth": 100,
       "unrest": 3,
-      "defense": 18000,
+      "defensiveness": 5,
+      "garrisons": 22000,
+      "neighbors": [
+        2,
+        27,
+        28,
+        30,
+        32
+      ],
       "history": "Core Han territory in central Henan; high population but surrounded."
     },
     {
       "id": 30,
       "game_id": 0,
       "country_id": 2,
-      "code": "JIUJIANG",
+      "commander_id": null,
+      "code": null,
       "name": "Jiujiang",
-      "population": 3509495,
+      "population": 3507155,
       "wealth": 75,
       "unrest": 2,
-      "defense": 9000,
+      "defensiveness": 6,
+      "garrisons": 17000,
+      "neighbors": [
+        27,
+        29,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
       "history": "Productive riverine region with partial cultural integration."
     },
     {
       "id": 31,
       "game_id": 0,
       "country_id": 2,
-      "code": "ZHANG",
+      "commander_id": null,
+      "code": null,
       "name": "Zhang",
-      "population": 303878,
+      "population": 303802,
       "wealth": 60,
       "unrest": 7,
-      "defense": 9000,
+      "defensiveness": 7,
+      "garrisons": 15000,
+      "neighbors": [
+        30,
+        34,
+        35
+      ],
       "history": "A mountainous area carved from former Yue territory, with mixed Chu/Yue populace."
     },
     {
       "id": 32,
       "game_id": 0,
       "country_id": 2,
-      "code": "SISHUI",
+      "commander_id": null,
+      "code": null,
       "name": "Sishui",
-      "population": 1516970,
+      "population": 1516338,
       "wealth": 65,
       "unrest": 5,
-      "defense": 9000,
+      "defensiveness": 4,
+      "garrisons": 15000,
+      "neighbors": [
+        26,
+        28,
+        29,
+        30,
+        35
+      ],
       "history": "Huai River plain; tributary agrarian zone, contested by Chu, Zhao, and Qi influence; medium productivity."
     },
     {
       "id": 33,
       "game_id": 0,
       "country_id": 2,
-      "code": "NAN",
+      "commander_id": null,
+      "code": null,
       "name": "Nan",
-      "population": 609543,
+      "population": 609137,
       "wealth": 80,
       "unrest": 2,
-      "defense": 14000,
-      "history": "Chu's heartland in the middle Yangtze. Good rice lands, substantial peasant base."
+      "defensiveness": 7,
+      "garrisons": 25000,
+      "neighbors": [
+        7,
+        27,
+        30,
+        36
+      ],
+      "history": "Chu\u0027s heartland in the middle Yangtze. Good rice lands, substantial peasant base."
     },
     {
       "id": 34,
       "game_id": 0,
       "country_id": 2,
-      "code": "KUAIJI",
+      "commander_id": null,
+      "code": null,
       "name": "Kuaiji",
-      "population": 774453,
+      "population": 774065,
       "wealth": 55,
-      "unrest": 4,
-      "defense": 13000,
-      "history": "Former heartland of Yue, annexed by Chu. Productive rice and waterways under Chu influence but still dominated by Yue culture and prone to unrest."
+      "unrest": 2,
+      "defensiveness": 6,
+      "garrisons": 15000,
+      "neighbors": [
+        30,
+        31
+      ],
+      "history": "In July 247 BCE, unrest was quelled through the granting of local tax exemptions, though the region remains culturally distinct from the Chu heartland."
     },
     {
       "id": 35,
       "game_id": 0,
       "country_id": 2,
-      "code": "DONGHAI",
+      "commander_id": null,
+      "code": null,
       "name": "Donghai",
-      "population": 1987022,
+      "population": 1986194,
       "wealth": 60,
       "unrest": 5,
-      "defense": 16000,
-      "history": "Chu's coastal frontier.  economy based on agriculture and fishing. Incorporated former Yue territories with local autonomy;"
+      "defensiveness": 4,
+      "garrisons": 12000,
+      "neighbors": [
+        25,
+        26,
+        30,
+        31,
+        32
+      ],
+      "history": "Chu\u0027s coastal frontier.  economy based on agriculture and fishing. Incorporated former Yue territories with local autonomy;"
     },
     {
       "id": 36,
       "game_id": 0,
       "country_id": 2,
-      "code": "CHANGSHA",
+      "commander_id": null,
+      "code": null,
       "name": "Changsha",
-      "population": 398768,
+      "population": 398502,
       "wealth": 65,
       "unrest": 2,
-      "defense": 8000,
-      "history": "Hunan plain; rice and subtropical crops; Southern frontier of Chu. Sparse population with significant indigenous \"Hundred Yue\" peoples; loose Chu control."
+      "defensiveness": 5,
+      "garrisons": 12000,
+      "neighbors": [
+        30,
+        33
+      ],
+      "history": "Hunan plain; rice and subtropical crops; Southern frontier of Chu. Sparse population with significant indigenous \u0022Hundred Yue\u0022 peoples; loose Chu control."
     },
     {
       "id": 1,
       "game_id": 0,
       "country_id": 1,
-      "code": "NEISHI",
+      "commander_id": null,
+      "code": null,
       "name": "Neishi",
-      "population": 1747452,
+      "population": 1745995,
       "wealth": 120,
       "unrest": 0,
-      "defense": 33000,
+      "defensiveness": 6,
+      "garrisons": 37000,
+      "neighbors": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        27
+      ],
       "history": "Capital Qin core centered on Xianyang; most secure, populous, and administratively mature region; supreme logistics and command hub."
     }
   ],
-  "units": [
+  "army": [
     {
       "id": 1,
       "game_id": 0,
@@ -1411,8 +2091,9 @@
       "location_id": 1,
       "name": "Royal Qin Army",
       "size": 100000,
-      "morale": 90,
+      "morale": 108,
       "supply": 100,
+      "action_left": 1,
       "history": ""
     },
     {
@@ -1420,11 +2101,12 @@
       "game_id": 0,
       "country_id": 2,
       "commander_id": 16,
-      "location_id": 30,
+      "location_id": 35,
       "name": "Royal Chu Army",
       "size": 100000,
-      "morale": 88,
+      "morale": 105,
       "supply": 100,
+      "action_left": 1,
       "history": ""
     },
     {
@@ -1432,11 +2114,12 @@
       "game_id": 0,
       "country_id": 3,
       "commander_id": null,
-      "location_id": 24,
+      "location_id": 26,
       "name": "Royal Qi Army",
       "size": 100000,
-      "morale": 90,
+      "morale": 98,
       "supply": 100,
+      "action_left": 1,
       "history": ""
     },
     {
@@ -1447,20 +2130,22 @@
       "location_id": 10,
       "name": "Royal Zhao Army",
       "size": 100000,
-      "morale": 83,
+      "morale": 94,
       "supply": 100,
-      "history": ""
+      "action_left": 1,
+      "history": "The Royal Zhao Army suffered a blow to morale in July 247 BCE after its commander, Li Mu, had his funding reduced due to court intrigue."
     },
     {
       "id": 5,
       "game_id": 0,
       "country_id": 5,
       "commander_id": 14,
-      "location_id": 23,
+      "location_id": 15,
       "name": "Royal Wei Army",
-      "size": 100000,
+      "size": 98000,
       "morale": 80,
-      "supply": 100,
+      "supply": 70,
+      "action_left": 1,
       "history": ""
     },
     {
@@ -1471,8 +2156,9 @@
       "location_id": 18,
       "name": "Royal Yan Army",
       "size": 100000,
-      "morale": 78,
+      "morale": 93,
       "supply": 100,
+      "action_left": 1,
       "history": ""
     },
     {
@@ -1483,9 +2169,11 @@
       "location_id": 28,
       "name": "Royal Han Army",
       "size": 100000,
-      "morale": 80,
+      "morale": 96,
       "supply": 100,
+      "action_left": 1,
       "history": ""
     }
-  ]
+  ],
+  "battle": []
 }

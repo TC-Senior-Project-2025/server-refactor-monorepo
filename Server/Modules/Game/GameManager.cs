@@ -1,17 +1,18 @@
 using System.Net.WebSockets;
+using System.Reflection;
 using System.Text.Json;
 using Server.Common.WebSockets;
 using Server.Modules.Assets;
 using Server.Modules.Game.Actions;
 using Server.Modules.Game.Actions.Dto;
 using Server.Modules.Game.Actions.Enums;
-using Server.Modules.Game.Sessions;
-using Server.Modules.SaveGames;
 using Server.Modules.Game.Core;
 using Server.Modules.Game.Dto;
 using Server.Modules.Game.Events;
 using Server.Modules.Game.Memory;
-using System.Diagnostics;
+using Server.Modules.Game.Services;
+using Server.Modules.Game.Sessions;
+using Server.Modules.SaveGames;
 
 namespace Server.Modules.Game;
 
@@ -25,10 +26,14 @@ public class GameManager(
     EventGenerator eventGenerator,
     AssetsService assetsService,
     HistorySummarizer historySummarizer,
-    RecentSituationSummarizer recentSituationSummarizer
+    RecentSituationSummarizer recentSituationSummarizer,
+    IEnumerable<IPlayerActionHandler> playerActionHandlers
     )
 {
+
     private readonly IGameSessionStore _sessionStore = sessionStore;
+    private readonly Dictionary<PlayerActionType, IPlayerActionHandler> _playerActionHandlers =
+        playerActionHandlers.ToDictionary(handler => handler.Type);
 
     /// <summary>
     /// Sends an error message to a connected WebSocket client.
@@ -129,11 +134,21 @@ public class GameManager(
             return;
         }
 
-        gameState.CurrentPhase = GamePhase.EventGeneration;
+        var country = gameState.GetPlayerCountry();
+        if (country == null)
+        {
+            logger.LogError("Player country not found");
+            await SendError(context.Socket, "Player country not found");
+            return;
+        }
 
-        logger.LogInformation("Advancing turn...");
+        // Process turn
+        var turnProcessResult = TurnService.ProcessTurn(gameState);
+
+        gameState.CurrentPhase = GamePhase.EventGeneration;
         gameState.Turn++;
 
+        await context.Socket.SendTopic("C_DisplayTurnProcessResult", turnProcessResult);
         await context.Socket.SendTopic("C_UpdateGameState", gameState);
     }
 
@@ -325,78 +340,39 @@ public class GameManager(
             return;
         }
 
-        switch (playerAction.Action)
+        if (!_playerActionHandlers.TryGetValue(playerAction.Action, out var handler))
         {
-            case PlayerActionType.IncreaseMilitaryBudget:
-                {
-                    gameState.GetPlayerCountry().Resources.Treasury -= 10;
-                    gameState.GetPlayerCountry().Resources.Manpower += 20;
-                    break;
-                }
-            case PlayerActionType.MoveUnits:
-                {
-                    MoveUnitsDto? payload;
-                    try
-                    {
-                        payload = playerAction.ParsePayload<MoveUnitsDto>() ?? throw new Exception("Parsed payload is null");
-                    }
-                    catch (Exception e)
-                    {
-                        logger.LogError("Failed to parse payload: {Error}", e);
-                        await SendError(context.Socket, "Failed to parse payload");
-                        return;
-                    }
+            logger.LogError("No handler registered for action {Action}", playerAction.Action);
+            await SendError(context.Socket, "Invalid player action");
+            return;
+        }
 
-                    var connections = assetsService.LoadMapConnections();
-                    if (connections == null)
-                    {
-                        logger.LogError("Failed to load connections");
-                        await SendError(context.Socket, "Failed to load connections");
-                        return;
-                    }
+        var payloadType = handler.PayloadType ?? handler.GetType().GetCustomAttribute<PlayerActionHandlerAttribute>()?.PayloadType;
+        object? typedPayload = null;
 
-                    List<(Unit, int)> unitsToMove = []; 
-                    foreach (var (unitId, locationId) in payload.UnitMovements)
-                    {
-                        var unit = gameState.Units.Find(u => u.Id == unitId);
-                        
-                        if (unit == null)
-                        {
-                            logger.LogError("Unit {} does not exist", unitId);
-                            await SendError(context.Socket, "Unit does not exist");
-                            return;
-                        }
-                        
-                        if (!gameState.Commanderies.ContainsKey(locationId))
-                        {
-                            logger.LogError("Commandery {} does not exist", locationId);
-                            await SendError(context.Socket, "Commandery does not exist");
-                            return;
-                        }
+        if (payloadType != null)
+        {
+            try
+            {
+                typedPayload = playerAction.ParsePayload(payloadType);
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e, "Failed to parse payload for action {Action}", playerAction.Action);
+                await SendError(context.Socket, "Failed to parse payload");
+                return;
+            }
+        }
 
-                        if (!connections.IsNeighborOf(unit.LocationId, locationId))
-                        {
-                            logger.LogError("{SrcId} is not a neighbor of {DstId}, cannot move unit", 
-                                unit.LocationId, 
-                                locationId
-                            );
-                            await SendError(context.Socket, "Cannot move to target location");
-                            return;
-                        }
-                        
-                        unitsToMove.Add((unit, locationId));
-                    }
-
-                    foreach (var pair in unitsToMove)
-                    {
-                        var (unit, locationId) = pair;
-                        unit.LocationId = locationId;
-                    }
-                    
-                    break;
-                }
-            default:
-                throw new ArgumentOutOfRangeException($"Unknown player action: {playerAction.Action.ToString()}");
+        try
+        {
+            await handler.HandleAsync(context, gameState, typedPayload);
+        }
+        catch (Exception e)
+        {
+            logger.LogError(e, "Error handling player action {Action}", playerAction.Action);
+            await SendError(context.Socket, e.Message);
+            return;
         }
 
         gameState.CurrentPhase = GamePhase.Start;

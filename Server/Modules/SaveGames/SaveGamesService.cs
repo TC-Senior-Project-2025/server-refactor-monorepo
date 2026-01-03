@@ -26,8 +26,8 @@ public class SaveGamesService(
         {
             throw new InvalidOperationException("Default scenario not found");
         }
-        
-        var countries = scenario.Countries
+
+        var countries = scenario.Country
             .ToDictionary(ce => ce.Id, ce => new Country()
             {
                 Id = ce.Id,
@@ -44,16 +44,19 @@ public class SaveGamesService(
                 RecentSituationSummary = ce.History
             });
 
-        var commanderies = scenario.Commanderies
+        var commanderies = scenario.Commandery
             .ToDictionary(ce => ce.Id, ce => new Commandery()
             {
                 Id = ce.Id,
                 Code = ce.Code,
                 Name = ce.Name,
-                Population = ce.Population
+                Population = ce.Population,
+                Wealth = ce.Wealth,
+                Unrest = ce.Unrest,
+                CountryId = ce.CountryId
             });
 
-        var units = scenario.Units.Select(u => new Unit
+        var units = scenario.Army.Select(u => new Unit
         {
             Id = u.Id,
             CountryId = u.CountryId,
@@ -114,9 +117,9 @@ public class SaveGamesService(
     {
         var saveGame = await dbContext.SaveGames.FindAsync(id);
         if (saveGame == null) return;
-        
+
         saveGame.GameStateJson = JsonSerializer.Serialize(gameState);
-        
+
         await dbContext.SaveChangesAsync();
     }
 
@@ -124,7 +127,7 @@ public class SaveGamesService(
     {
         var saveGame = await GetSaveGame(id);
         if (saveGame == null) return;
-        
+
         dbContext.SaveGames.Remove(saveGame);
         await dbContext.SaveChangesAsync();
     }

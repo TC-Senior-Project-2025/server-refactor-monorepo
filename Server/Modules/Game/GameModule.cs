@@ -1,6 +1,8 @@
 using Server.Common.Llm.Interfaces;
 using Server.Common.Llm.Services;
 using Server.Common.WebSockets;
+using Server.Modules.Game.Actions;
+using Server.Modules.Game.Actions.Handlers;
 using Server.Modules.Game.Events;
 using Server.Modules.Game.Memory;
 using Server.Modules.Game.Sessions;
@@ -23,6 +25,8 @@ public static class GameModule
         services.AddSingleton<WebSocketConnectionManager>();
         services.AddScoped<GameSocketHandler>();
         services.AddScoped<GameManager>();
+        services.AddScoped<IPlayerActionHandler, IncreaseMilitaryBudgetHandler>();
+        services.AddScoped<IPlayerActionHandler, MoveUnitsHandler>();
         services.AddScoped<EventGenerator>();
         services.AddScoped<HistorySummarizer>();
         services.AddScoped<RecentSituationSummarizer>();
