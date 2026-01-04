@@ -5,5 +5,6 @@ public enum PlayerActionType
     IncreaseMilitaryBudget,
     MoveUnit,
     MoveUnits,
-    MergeUnits
+    MergeUnits,
+    SplitUnit
 }

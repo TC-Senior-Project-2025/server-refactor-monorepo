@@ -5,6 +5,7 @@ namespace Server.Modules.Assets.Entities;
 
 public class Scenario
 {
+    [JsonPropertyName("game")] public List<GameData> Game { get; set; } = [];
     [JsonPropertyName("country")] public List<CountryData> Country { get; set; } = [];
     [JsonPropertyName("relation")] public List<RelationData> Relation { get; set; } = [];
     [JsonPropertyName("person")] public List<PersonData> Person { get; set; } = [];
@@ -13,6 +14,18 @@ public class Scenario
     [JsonPropertyName("battle")] public List<BattleData> Battle { get; set; } = [];
     [JsonExtensionData] public Dictionary<string, JsonElement> ExtensionData { get; set; }
 }
+
+public class GameData
+{
+    [JsonPropertyName("id")] public int Id { get; set; }
+    [JsonPropertyName("turn")] public int Turn { get; set; }
+    [JsonPropertyName("current_year")] public int CurrentYear { get; set; }
+    [JsonPropertyName("current_month")] public int CurrentMonth { get; set; }
+    [JsonPropertyName("months_per_turn")] public int MonthsPerTurn { get; set; }
+    [JsonPropertyName("history")] public string History { get; set; }
+    [JsonExtensionData] public Dictionary<string, JsonElement> ExtensionData { get; set; }
+}
+
 
 public class CountryData
 {

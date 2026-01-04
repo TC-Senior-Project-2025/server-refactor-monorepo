@@ -21,13 +21,13 @@ public class AssetsServiceTests
     public void LoadScenario_DefaultScenario_CurrentYear_Minus247()
     {
         var scenario = _sut.LoadScenario("default_scenario");
-        Assert.That(scenario?.Game.CurrentYear, Is.EqualTo(-247));
+        Assert.That(scenario?.Game[0].CurrentYear, Is.EqualTo(-247));
     }
-    
+
     [Test]
     public void LoadScenario_DefaultScenario_Has36Commanderies()
     {
         var scenario = _sut.LoadScenario("default_scenario");
-        Assert.That(scenario?.Commanderies.Count, Is.EqualTo(36));
+        Assert.That(scenario?.Commandery.Count, Is.EqualTo(36));
     }
 }
