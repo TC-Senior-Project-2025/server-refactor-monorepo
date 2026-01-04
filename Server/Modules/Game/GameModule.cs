@@ -25,8 +25,12 @@ public static class GameModule
         services.AddSingleton<WebSocketConnectionManager>();
         services.AddScoped<GameSocketHandler>();
         services.AddScoped<GameManager>();
+
         services.AddScoped<IPlayerActionHandler, IncreaseMilitaryBudgetHandler>();
         services.AddScoped<IPlayerActionHandler, MoveUnitsHandler>();
+        services.AddScoped<IPlayerActionHandler, MergeUnitsHandler>();
+        services.AddScoped<IPlayerActionHandler, MoveUnitHandler>();
+
         services.AddScoped<EventGenerator>();
         services.AddScoped<HistorySummarizer>();
         services.AddScoped<RecentSituationSummarizer>();

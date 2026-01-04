@@ -375,8 +375,8 @@ public class GameManager(
             return;
         }
 
-        gameState.CurrentPhase = GamePhase.Start;
+        // gameState.CurrentPhase = GamePhase.Start;
         await context.Socket.SendTopic("C_UpdateGameState", gameState);
-        await context.Socket.SendTopic("C_NewTurn");
+        // await context.Socket.SendTopic("C_NewTurn");
     }
 }

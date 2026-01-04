@@ -2097,6 +2097,32 @@
       "history": ""
     },
     {
+      "id": 11,
+      "game_id": 0,
+      "country_id": 1,
+      "commander_id": 5,
+      "location_id": 1,
+      "name": "Royal Qin Army 2",
+      "size": 100000,
+      "morale": 108,
+      "supply": 100,
+      "action_left": 1,
+      "history": ""
+    },
+    {
+      "id": 111,
+      "game_id": 0,
+      "country_id": 1,
+      "commander_id": 5,
+      "location_id": 2,
+      "name": "Royal Qin Army 3",
+      "size": 100000,
+      "morale": 108,
+      "supply": 100,
+      "action_left": 1,
+      "history": ""
+    },
+    {
       "id": 2,
       "game_id": 0,
       "country_id": 2,
@@ -2140,7 +2166,7 @@
       "game_id": 0,
       "country_id": 5,
       "commander_id": 14,
-      "location_id": 15,
+      "location_id": 23,
       "name": "Royal Wei Army",
       "size": 98000,
       "morale": 80,

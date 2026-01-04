@@ -59,6 +59,7 @@ public class MoveUnitsHandler(AssetsService assetsService, ILogger<MoveUnitsHand
         {
             var (unit, targetLocationId) = pair;
             unit.LocationId = targetLocationId;
+            unit.CanMove = false;
         }
 
         return Task.CompletedTask;

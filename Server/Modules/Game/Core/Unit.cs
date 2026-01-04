@@ -19,4 +19,6 @@ public class Unit
     public required int Supply { get; set; }
 
     public required string History { get; set; }
+
+    public bool CanMove { get; set; } = true;
 }
