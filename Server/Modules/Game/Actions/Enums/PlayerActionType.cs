@@ -6,5 +6,6 @@ public enum PlayerActionType
     MoveUnit,
     MoveUnits,
     MergeUnits,
-    SplitUnit
+    SplitUnit,
+    ResupplyUnit
 }

@@ -2090,9 +2090,9 @@
       "commander_id": 5,
       "location_id": 1,
       "name": "Royal Qin Army",
-      "size": 100000,
+      "size": 51252,
       "morale": 108,
-      "supply": 100,
+      "supply": 50,
       "action_left": 1,
       "history": ""
     },

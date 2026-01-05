@@ -8,6 +8,7 @@ public static class ArmyService
     public const float ArmyUpkeep = 0.00025f;
     public const int SupplyDecay = 30;
     public const int Attrition = 10;
+    public const int SupplyPrice = 100000;
 
     public static int CalculateManpowerGain(int efficiency, Commandery commandery)
     {
@@ -20,5 +21,10 @@ public static class ArmyService
     public static int CalculateUnitCost(Unit unit)
     {
         return (int)(unit.Size * ArmyUpkeep);
+    }
+
+    public static double CalculateCostPerSupply(int armySize)
+    {
+        return (double)armySize / SupplyPrice;
     }
 }

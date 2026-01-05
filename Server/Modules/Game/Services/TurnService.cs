@@ -86,6 +86,7 @@ public static class TurnService
         foreach (var unit in gameState.Units)
         {
             unit.CanMove = true;
+            unit.CanResupply = true;
 
             var country = gameState.Countries[unit.CountryId];
             var unitCost = ArmyService.CalculateUnitCost(unit);

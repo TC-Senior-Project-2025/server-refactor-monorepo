@@ -31,6 +31,7 @@ public static class GameModule
         services.AddScoped<IPlayerActionHandler, MergeUnitsHandler>();
         services.AddScoped<IPlayerActionHandler, MoveUnitHandler>();
         services.AddScoped<IPlayerActionHandler, SplitUnitsHandler>();
+        services.AddScoped<IPlayerActionHandler, ResupplyUnitHandler>();
 
         services.AddScoped<EventGenerator>();
         services.AddScoped<HistorySummarizer>();

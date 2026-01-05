@@ -21,4 +21,6 @@ public class Unit
     public required string History { get; set; }
 
     public bool CanMove { get; set; } = true;
+
+    public bool CanResupply { get; set; } = true;
 }
