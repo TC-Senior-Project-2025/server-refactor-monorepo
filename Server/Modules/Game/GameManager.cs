@@ -375,8 +375,30 @@ public class GameManager(
             return;
         }
 
-        // gameState.CurrentPhase = GamePhase.Start;
         await context.Socket.SendTopic("C_UpdateGameState", gameState);
-        // await context.Socket.SendTopic("C_NewTurn");
+
+    }
+
+    [GameAction("S_FinishTurn")]
+    public async Task FinishTurn(GameActionContext context)
+    {
+        var session = await _sessionStore.GetByUserId(context.UserEntity.Id);
+        if (session == null)
+        {
+            await SendError(context.Socket, "Session not found for user");
+            return;
+        }
+
+        var gameState = session.GameState;
+
+        if (gameState.CurrentPhase != GamePhase.PlayerAction)
+        {
+            await SendError(context.Socket, "Game not in player action phase");
+            return;
+        }
+
+        gameState.CurrentPhase = GamePhase.Start;
+        await context.Socket.SendTopic("C_UpdateGameState", gameState);
+        await context.Socket.SendTopic("C_NewTurn");
     }
 }
